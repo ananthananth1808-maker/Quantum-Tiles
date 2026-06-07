@@ -100,7 +100,7 @@ export default function AuthPage({ initialTab = 'login' }) {
   };
 
   return (
-    <div className="min-h-screen bg-navy text-white">
+    <div className="min-h-screen bg-background text-textPrimary">
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col md:flex-row">
         <motion.section
           initial={{ opacity: 0, x: -40 }}
@@ -109,19 +109,19 @@ export default function AuthPage({ initialTab = 'login' }) {
           className="relative flex-1 bg-[linear-gradient(180deg,rgba(15,23,42,0.96),rgba(15,23,42,0.78))] bg-cover bg-center px-6 py-12 text-white md:px-12 lg:px-16"
           style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80)' }}
         >
-          <div className="absolute inset-0 bg-navy/90" />
+          <div className="absolute inset-0 bg-black/5" />
           <div className="relative z-10 flex h-full flex-col justify-between gap-10">
             <div className="max-w-xl">
-              <p className="text-sm uppercase tracking-[0.35em] text-gold/90">Quantum Tiles</p>
+              <p className="text-sm uppercase tracking-[0.35em] text-primary">Quantum Tiles</p>
               <h1 className="mt-6 text-4xl font-semibold tracking-tight text-white sm:text-5xl">Transform Your Space with Premium Tiles</h1>
-              <p className="mt-6 text-base leading-7 text-white/75 sm:text-lg">
+              <p className="mt-6 text-base leading-7 text-textSecondary sm:text-lg">
                 Explore luxury tile collections, AI-powered room visualization, and seamless online tile shopping.
               </p>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
               {features.map((feature) => (
-                <div key={feature} className="rounded-[2rem] border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
+                <div key={feature} className="rounded-[2rem] border border-border bg-surface p-5 backdrop-blur-xl">
                   <p className="text-sm font-semibold text-white">✓ {feature}</p>
                 </div>
               ))}
@@ -143,7 +143,7 @@ export default function AuthPage({ initialTab = 'login' }) {
                     key={tab}
                     type="button"
                     onClick={() => setActiveTab(tab)}
-                    className={`rounded-full px-6 py-3 text-sm font-semibold transition ${activeTab === tab ? 'bg-navy text-white shadow-glow' : 'bg-white/10 text-white/70 hover:bg-white/20'}`}
+                    className={`rounded-full px-6 py-3 text-sm font-semibold transition ${activeTab === tab ? 'bg-primary text-white shadow-md' : 'bg-surface text-textSecondary border border-border hover:bg-blue-50'}`}
                   >
                     {tab === 'login' ? 'Login' : 'Register'}
                   </button>
@@ -158,19 +158,19 @@ export default function AuthPage({ initialTab = 'login' }) {
                       <input
                         type="email"
                         placeholder="you@quantumtiles.com"
-                        className="w-full rounded-3xl border border-white/10 bg-navy/80 px-4 py-3 text-white outline-none transition focus:border-gold"
+                        className="w-full rounded-3xl border border-border bg-surface px-4 py-3 text-textPrimary outline-none transition focus:border-primary focus:ring-2 focus:ring-blue-100"
                         {...register('email', { required: 'Email is required' })}
                       />
                       {errors.email && <p className="text-xs text-rose-300">{errors.email.message}</p>}
                     </div>
 
                     <div className="space-y-4">
-                      <label className="block text-sm font-medium text-white/90">Password</label>
+                      <label className="block text-sm font-medium text-textSecondary">Password</label>
                       <div className="relative">
                         <input
                           type={showPassword ? 'text' : 'password'}
                           placeholder="Enter your password"
-                          className="w-full rounded-3xl border border-white/10 bg-navy/80 px-4 py-3 pr-28 text-white outline-none transition focus:border-gold"
+                          className="w-full rounded-3xl border border-border bg-surface px-4 py-3 pr-28 text-textPrimary outline-none transition focus:border-primary focus:ring-2 focus:ring-blue-100"
                           {...register('password', { required: 'Password is required' })}
                         />
                         <button
@@ -184,12 +184,12 @@ export default function AuthPage({ initialTab = 'login' }) {
                       {errors.password && <p className="text-xs text-rose-300">{errors.password.message}</p>}
                     </div>
 
-                    <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-white/70">
+                    <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-textSecondary">
                       <label className="inline-flex items-center gap-2">
-                        <input type="checkbox" className="h-4 w-4 rounded border-white/20 bg-white/5 accent-gold" />
+                        <input type="checkbox" className="h-4 w-4 rounded border-border bg-surface accent-primary" />
                         Remember Me
                       </label>
-                      <button type="button" onClick={handleForgotPassword} className="text-gold transition hover:text-white">
+                      <button type="button" onClick={handleForgotPassword} className="text-primary transition hover:text-blue-700">
                         Forgot Password?
                       </button>
                     </div>
@@ -269,10 +269,10 @@ export default function AuthPage({ initialTab = 'login' }) {
                     {errors.confirmPassword?.message && <p className="text-xs text-rose-300">{errors.confirmPassword.message}</p>}
 
                     <div className="space-y-4 text-sm text-white/80">
-                      <p className="font-medium uppercase tracking-[0.32em] text-gold/90">Select role</p>
+                      <p className="font-medium uppercase tracking-[0.32em] text-primary">Select role</p>
                       <div className="flex flex-wrap gap-3">
                         {roles.map((role) => (
-                          <label key={role} className="inline-flex items-center gap-3 rounded-3xl border border-white/10 bg-navy/80 px-4 py-3 text-white/80 transition hover:border-gold">
+                          <label key={role} className="inline-flex items-center gap-3 rounded-3xl border border-border bg-surface px-4 py-3 text-textSecondary transition hover:border-primary">
                             <input
                               type="radio"
                               value={role}

@@ -56,7 +56,7 @@ export default function ProfileDropdown({ role = 'guest' }) {
       <button
         type="button"
         onClick={() => setIsOpen((open) => !open)}
-        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:bg-white/10"
+        className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-surface text-textPrimary transition hover:bg-blue-50"
       >
         <User className="h-5 w-5" />
       </button>
@@ -67,12 +67,12 @@ export default function ProfileDropdown({ role = 'guest' }) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute right-0 z-50 mt-3 w-72 overflow-hidden rounded-3xl border border-white/10 bg-slate-950/95 p-4 shadow-2xl shadow-black/40 backdrop-blur-xl"
+            className="absolute right-0 z-50 mt-3 w-72 overflow-hidden rounded-3xl border border-border bg-white p-4 shadow-lg shadow-black/10 backdrop-blur-xl"
           >
             <div className="space-y-3">
-              <div className="rounded-3xl bg-white/5 p-4">
-                <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Account</p>
-                <p className="mt-2 text-sm text-white/80">{role === 'admin' ? 'Admin access' : 'Customer access'}</p>
+              <div className="rounded-3xl bg-surface p-4 border border-border">
+                <p className="text-sm uppercase tracking-[0.32em] text-primary">Account</p>
+                <p className="mt-2 text-sm text-textSecondary">{role === 'admin' ? 'Admin access' : 'Customer access'}</p>
               </div>
 
               <div className="space-y-1">
@@ -83,9 +83,9 @@ export default function ProfileDropdown({ role = 'guest' }) {
                       key={item.label}
                       to={item.to}
                       onClick={() => setIsOpen(false)}
-                      className="flex items-center gap-3 rounded-3xl px-4 py-3 text-sm text-white/80 transition hover:bg-white/5 hover:text-white"
+                      className="flex items-center gap-3 rounded-3xl px-4 py-3 text-sm text-textSecondary transition hover:bg-blue-50 hover:text-primary"
                     >
-                      <Icon className="h-4 w-4 text-gold" />
+                      <Icon className="h-4 w-4 text-primary" />
                       <span>{item.label}</span>
                     </Link>
                   );
@@ -95,7 +95,7 @@ export default function ProfileDropdown({ role = 'guest' }) {
               <button
                 type="button"
                 onClick={handleLogout}
-                className="flex w-full items-center justify-center gap-2 rounded-3xl bg-rose-500/10 px-4 py-3 text-sm text-rose-200 transition hover:bg-rose-500/15"
+                className="flex w-full items-center justify-center gap-2 rounded-3xl bg-rose-50 px-4 py-3 text-sm text-rose-600 transition hover:bg-rose-100"
               >
                 <LogOut className="h-4 w-4" /> Logout
               </button>

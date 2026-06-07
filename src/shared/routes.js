@@ -21,6 +21,7 @@ export const AppRoutes = {
   ADMIN_ANALYTICS: '/admin/analytics',
   AI_VISUALIZER: '/ai-visualizer',
   DESIGN_EXPLORER: '/design-explorer',
+  TILE_VISUALIZER: '/tile-visualizer',
   SEARCH: '/search',
   NOTIFICATIONS: '/notifications',
   NOT_FOUND: '*',

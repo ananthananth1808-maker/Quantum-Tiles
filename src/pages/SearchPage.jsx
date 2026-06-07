@@ -14,7 +14,7 @@ export default function SearchPage() {
           <input
             type="search"
             placeholder="Search tiles, collections, or designs..."
-            className="w-full rounded-3xl border border-white/10 bg-navy/80 px-5 py-4 text-white outline-none transition focus:border-gold"
+            className="w-full rounded-3xl border border-border bg-surface px-5 py-4 text-textPrimary outline-none transition focus:border-primary focus:ring-2 focus:ring-blue-100"
           />
           <button className="rounded-3xl bg-gold px-6 py-4 text-sm font-semibold text-navy transition hover:bg-amber-300">
             Search

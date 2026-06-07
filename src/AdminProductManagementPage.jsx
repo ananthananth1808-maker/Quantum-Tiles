@@ -109,11 +109,11 @@ export default function AdminProductManagementPage() {
   const totalValue = useMemo(() => products.reduce((sum, item) => sum + item.price * item.stock, 0), [products]);
 
   return (
-    <div className="min-h-screen bg-navy text-white">
+    <div className="min-h-screen bg-background text-textPrimary">
       <div className="mx-auto max-w-7xl px-6 py-8 md:px-8">
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-sm uppercase tracking-[0.35em] text-gold/90">Admin Product Management</p>
+            <p className="text-sm uppercase tracking-[0.35em] text-primary">Admin Product Management</p>
             <h1 className="mt-3 text-4xl font-semibold text-white">Manage your tile catalog</h1>
           </div>
           <Button variant="ghost" className="text-sm uppercase tracking-[0.18em]">Refresh</Button>
@@ -123,38 +123,38 @@ export default function AdminProductManagementPage() {
           <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl">
             <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Product Form</p>
+                <p className="text-sm uppercase tracking-[0.32em] text-primary">Product Form</p>
                 <h2 className="mt-3 text-2xl font-semibold text-white">Add or edit products</h2>
               </div>
-              <div className="text-sm text-white/70">{editId ? 'Edit mode' : 'Create mode'}</div>
+              <div className="text-sm text-textSecondary">{editId ? 'Edit mode' : 'Create mode'}</div>
             </div>
 
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid gap-4 lg:grid-cols-2">
-                <label className="space-y-2 text-sm text-white/80">
+                <label className="space-y-2 text-sm text-textSecondary">
                   <span>Product Name</span>
                   <input
                     value={form.name}
                     onChange={(event) => setForm({ ...form, name: event.target.value })}
                     type="text"
                     placeholder="Enter product name"
-                    className="w-full rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-gold focus:outline-none"
+                    className="w-full rounded-3xl border border-border bg-surface px-4 py-3 text-textPrimary placeholder:text-textSecondary focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-100"
                     required
                   />
                 </label>
-                <label className="space-y-2 text-sm text-white/80">
+                <label className="space-y-2 text-sm text-textSecondary">
                   <span>Category</span>
                   <select
                     value={form.category}
                     onChange={(event) => setForm({ ...form, category: event.target.value })}
-                    className="w-full rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-white focus:border-gold focus:outline-none"
+                    className="w-full rounded-3xl border border-border bg-surface px-4 py-3 text-textPrimary focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-100"
                   >
                     {categories.map((option) => (
                       <option key={option} value={option}>{option}</option>
                     ))}
                   </select>
                 </label>
-                <label className="space-y-2 text-sm text-white/80">
+                <label className="space-y-2 text-sm text-textSecondary">
                   <span>Price</span>
                   <input
                     value={form.price}
@@ -162,11 +162,11 @@ export default function AdminProductManagementPage() {
                     type="number"
                     min="0"
                     placeholder="0"
-                    className="w-full rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-gold focus:outline-none"
+                    className="w-full rounded-3xl border border-border bg-surface px-4 py-3 text-textPrimary placeholder:text-textSecondary focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-100"
                     required
                   />
                 </label>
-                <label className="space-y-2 text-sm text-white/80">
+                <label className="space-y-2 text-sm text-textSecondary">
                   <span>Stock</span>
                   <input
                     value={form.stock}
@@ -174,39 +174,39 @@ export default function AdminProductManagementPage() {
                     type="number"
                     min="0"
                     placeholder="0"
-                    className="w-full rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-gold focus:outline-none"
+                    className="w-full rounded-3xl border border-border bg-surface px-4 py-3 text-textPrimary placeholder:text-textSecondary focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-100"
                     required
                   />
                 </label>
-                <label className="space-y-2 text-sm text-white/80">
+                <label className="space-y-2 text-sm text-textSecondary">
                   <span>Tile Size</span>
                   <input
                     value={form.size}
                     onChange={(event) => setForm({ ...form, size: event.target.value })}
                     type="text"
                     placeholder='24" x 24"'
-                    className="w-full rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 focus:border-gold focus:outline-none"
+                    className="w-full rounded-3xl border border-border bg-surface px-4 py-3 text-textPrimary placeholder:text-textSecondary focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-100"
                     required
                   />
                 </label>
-                <label className="space-y-2 text-sm text-white/80">
+                <label className="space-y-2 text-sm text-textSecondary">
                   <span>Color</span>
                   <select
                     value={form.color}
                     onChange={(event) => setForm({ ...form, color: event.target.value })}
-                    className="w-full rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-white focus:border-gold focus:outline-none"
+                    className="w-full rounded-3xl border border-border bg-surface px-4 py-3 text-textPrimary focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-100"
                   >
                     {colors.map((option) => (
                       <option key={option} value={option}>{option}</option>
                     ))}
                   </select>
                 </label>
-                <label className="space-y-2 text-sm text-white/80">
+                <label className="space-y-2 text-sm text-textSecondary">
                   <span>Material</span>
                   <select
                     value={form.material}
                     onChange={(event) => setForm({ ...form, material: event.target.value })}
-                    className="w-full rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-white focus:border-gold focus:outline-none"
+                    className="w-full rounded-3xl border border-border bg-surface px-4 py-3 text-textPrimary focus:border-primary focus:outline-none focus:ring-2 focus:ring-blue-100"
                   >
                     {materials.map((option) => (
                       <option key={option} value={option}>{option}</option>
@@ -222,15 +222,15 @@ export default function AdminProductManagementPage() {
                     type="file"
                     accept="image/*"
                     onChange={handleImageUpload}
-                    className="w-full rounded-3xl border border-white/10 bg-white/5 px-4 py-3 text-white file:cursor-pointer file:border-0 file:bg-gold/10 file:px-4 file:py-2 file:text-navy"
+                    className="w-full rounded-3xl border border-border bg-surface px-4 py-3 text-textPrimary file:cursor-pointer file:border-0 file:bg-blue-100 file:px-4 file:py-2 file:text-primary"
                   />
                 </label>
-                <div className="rounded-[1.75rem] border border-white/10 bg-navy/40 p-4">
-                  <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Preview</p>
+                <div className="rounded-[1.75rem] border border-border bg-surface p-4">
+                  <p className="text-sm uppercase tracking-[0.32em] text-primary">Preview</p>
                   {preview ? (
                     <img src={preview} alt="Preview" className="mt-4 h-40 w-full rounded-3xl object-cover" />
                   ) : (
-                    <div className="mt-4 flex h-40 items-center justify-center rounded-3xl border border-dashed border-white/10 text-sm text-white/50">
+                    <div className="mt-4 flex h-40 items-center justify-center rounded-3xl border border-dashed border-border text-sm text-textSecondary">
                       Image preview will appear here
                     </div>
                   )}
@@ -246,40 +246,40 @@ export default function AdminProductManagementPage() {
             </form>
           </Card>
 
-          <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl">
+          <Card className="rounded-[2rem] border border-border bg-surface p-6 shadow-card">
             <div className="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Inventory Overview</p>
-                <h2 className="mt-3 text-2xl font-semibold text-white">Current catalog snapshot</h2>
+                <p className="text-sm uppercase tracking-[0.32em] text-primary">Inventory Overview</p>
+                <h2 className="mt-3 text-2xl font-semibold text-textPrimary">Current catalog snapshot</h2>
               </div>
-              <div className="rounded-full bg-white/5 px-4 py-2 text-sm text-white/70">{totalProducts} products</div>
+              <div className="rounded-full bg-surface px-4 py-2 text-sm text-textSecondary border border-border">{totalProducts} products</div>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
-              <div className="rounded-3xl border border-white/10 bg-navy/40 p-4">
-                <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Total Products</p>
-                <p className="mt-3 text-3xl font-semibold text-white">{totalProducts}</p>
+              <div className="rounded-3xl border border-border bg-white p-4 shadow-sm">
+                <p className="text-sm uppercase tracking-[0.32em] text-primary">Total Products</p>
+                <p className="mt-3 text-3xl font-semibold text-textPrimary">{totalProducts}</p>
               </div>
-              <div className="rounded-3xl border border-white/10 bg-navy/40 p-4">
-                <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Total Stock</p>
-                <p className="mt-3 text-3xl font-semibold text-white">{totalStock}</p>
+              <div className="rounded-3xl border border-border bg-white p-4 shadow-sm">
+                <p className="text-sm uppercase tracking-[0.32em] text-primary">Total Stock</p>
+                <p className="mt-3 text-3xl font-semibold text-textPrimary">{totalStock}</p>
               </div>
-              <div className="rounded-3xl border border-white/10 bg-navy/40 p-4">
-                <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Catalog Value</p>
-                <p className="mt-3 text-3xl font-semibold text-white">${totalValue.toLocaleString()}</p>
+              <div className="rounded-3xl border border-border bg-white p-4 shadow-sm">
+                <p className="text-sm uppercase tracking-[0.32em] text-primary">Catalog Value</p>
+                <p className="mt-3 text-3xl font-semibold text-textPrimary">${totalValue.toLocaleString()}</p>
               </div>
             </div>
           </Card>
         </section>
 
         <section className="mt-8">
-          <Card className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-glow backdrop-blur-xl">
-            <div className="border-b border-white/10 p-6">
-              <h2 className="text-2xl font-semibold text-white">Product Data Table</h2>
-              <p className="mt-2 text-sm text-white/70">Edit, delete, or review product details at a glance.</p>
+          <Card className="overflow-hidden rounded-[2rem] border border-border bg-white shadow-card">
+            <div className="border-b border-border p-6">
+              <h2 className="text-2xl font-semibold text-textPrimary">Product Data Table</h2>
+              <p className="mt-2 text-sm text-textSecondary">Edit, delete, or review product details at a glance.</p>
             </div>
             <div className="overflow-x-auto px-6 py-4">
-              <table className="min-w-full divide-y divide-white/10 text-left text-sm text-white/70">
-                <thead className="border-b border-white/10 text-white/60">
+              <table className="min-w-full divide-y divide-border text-left text-sm text-textSecondary">
+                <thead className="border-b border-border text-textPrimary">
                   <tr>
                     <th className="px-4 py-4">Product</th>
                     <th className="px-4 py-4">Category</th>
@@ -293,13 +293,13 @@ export default function AdminProductManagementPage() {
                 </thead>
                 <tbody className="divide-y divide-white/10">
                   {products.map((product) => (
-                    <tr key={product.id} className="hover:bg-white/5">
+                    <tr key={product.id} className="hover:bg-blue-50">
                       <td className="px-4 py-4">
                         <div className="flex items-center gap-3">
                           <img src={product.image} alt={product.name} className="h-14 w-14 rounded-3xl object-cover" />
                           <div>
                             <p className="font-semibold text-white">{product.name}</p>
-                            <p className="text-xs text-white/50">ID: {product.id}</p>
+                            <p className="text-xs text-textSecondary">ID: {product.id}</p>
                           </div>
                         </div>
                       </td>

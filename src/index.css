@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html {
@@ -14,7 +14,8 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: 'Inter', sans-serif;
-  background: #0f172a;
+  background: #FFFFFF;
+  color: #1F2937;
 }
 
 ::-webkit-scrollbar {
@@ -22,12 +23,37 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(212,175,55,0.4);
+  background: rgba(37, 99, 235, 0.3);
   border-radius: 9999px;
 }
 
+::-webkit-scrollbar-track {
+  background: rgba(37, 99, 235, 0.05);
+}
+
 .hero-background {
-  background-image: linear-gradient(180deg, rgba(15,23,42,0.46), rgba(15,23,42,0.9)), url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80');
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.98)), url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80');
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
+}
+
+/* Glass effect for premium navbar */
+.glass-navbar {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #E5E7EB;
+}
+
+/* Premium card shadow */
+.card-shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.card-shadow-hover {
+  transition: box-shadow 0.3s ease;
+}
+
+.card-shadow-hover:hover {
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }

@@ -23,7 +23,7 @@ export default function ProductDetails() {
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-navy text-white">
+      <div className="min-h-screen bg-background text-textPrimary">
         <div className="mx-auto max-w-7xl px-6 py-20 text-center">
           <p className="text-sm uppercase tracking-[0.35em] text-gold/90">Product Not Found</p>
           <h1 className="mt-4 text-3xl font-semibold text-white">Unable to locate this tile.</h1>
@@ -37,7 +37,7 @@ export default function ProductDetails() {
 
   return (
     <div className="min-h-screen bg-navy text-white">
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-navy/95 backdrop-blur-xl">
+      <header className="sticky top-0 z-40 border-b border-border bg-white backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-8">
           <div>
             <p className="text-sm uppercase tracking-[0.35em] text-gold/90">Quantum Tiles</p>
@@ -100,17 +100,17 @@ export default function ProductDetails() {
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-3xl border border-white/10 bg-navy/50 p-6">
-                  <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Dimensions</p>
-                  <p className="mt-3 text-lg font-semibold text-white">{product.dimensions}</p>
+                <div className="rounded-3xl border border-border bg-surface p-6">
+                  <p className="text-sm uppercase tracking-[0.32em] text-primary">Dimensions</p>
+                  <p className="mt-3 text-lg font-semibold text-textPrimary">{product.dimensions}</p>
                 </div>
-                <div className="rounded-3xl border border-white/10 bg-navy/50 p-6">
-                  <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Material</p>
-                  <p className="mt-3 text-lg font-semibold text-white">{product.material}</p>
+                <div className="rounded-3xl border border-border bg-surface p-6">
+                  <p className="text-sm uppercase tracking-[0.32em] text-primary">Material</p>
+                  <p className="mt-3 text-lg font-semibold text-textPrimary">{product.material}</p>
                 </div>
-                <div className="col-span-2 rounded-3xl border border-white/10 bg-navy/50 p-6">
-                  <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Finish</p>
-                  <p className="mt-3 text-lg font-semibold text-white">{product.finish}</p>
+                <div className="col-span-2 rounded-3xl border border-border bg-surface p-6">
+                  <p className="text-sm uppercase tracking-[0.32em] text-primary">Finish</p>
+                  <p className="mt-3 text-lg font-semibold text-textPrimary">{product.finish}</p>
                 </div>
               </div>
 

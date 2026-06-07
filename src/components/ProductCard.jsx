@@ -20,9 +20,9 @@ export function ProductCard({ product }) {
     <motion.article
       variants={hoverLift}
       whileHover="whileHover"
-      className="group overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-glow transition-shadow duration-300"
+      className="group overflow-hidden rounded-[2rem] border border-border bg-white shadow-card transition-shadow duration-300"
     >
-      <div className="relative overflow-hidden bg-navy">
+      <div className="relative overflow-hidden bg-gray-100">
         <motion.img
           src={product.image}
           alt={product.name}
@@ -30,10 +30,10 @@ export function ProductCard({ product }) {
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.7 }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
         <motion.button
           type="button"
-          className="absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white/20"
+          className="absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/50 bg-white/80 text-primary transition hover:bg-white"
           whileHover={{ scale: 1.15, rotate: 10 }}
           whileTap={{ scale: 0.9 }}
           aria-label="Add to wishlist"
@@ -48,7 +48,7 @@ export function ProductCard({ product }) {
         <div className="flex items-center justify-between gap-3">
           <div>
             <motion.p
-              className="text-xs uppercase tracking-[0.28em] text-gold/90"
+              className="text-xs uppercase tracking-[0.28em] text-primary"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
@@ -56,7 +56,7 @@ export function ProductCard({ product }) {
               {product.category}
             </motion.p>
             <motion.h3
-              className="mt-3 text-xl font-semibold text-white"
+              className="mt-3 text-xl font-semibold text-textPrimary"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -65,7 +65,7 @@ export function ProductCard({ product }) {
             </motion.h3>
           </div>
           <motion.span
-            className={`rounded-full px-3 py-1 text-xs font-semibold ${product.stock === 'In Stock' ? 'bg-emerald-500/15 text-emerald-300' : 'bg-amber-500/15 text-amber-300'}`}
+            className={`rounded-full px-3 py-1 text-xs font-semibold ${product.stock === 'In Stock' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}`}
             whileHover={{ scale: 1.05 }}
           >
             {product.stock}
@@ -73,7 +73,7 @@ export function ProductCard({ product }) {
         </div>
 
         <motion.p
-          className="text-sm leading-6 text-white/70"
+          className="text-sm leading-6 text-textSecondary"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -84,7 +84,7 @@ export function ProductCard({ product }) {
         <div className="flex items-center justify-between gap-4">
           <div>
             <motion.p
-              className="text-2xl font-semibold text-white"
+              className="text-2xl font-semibold text-textPrimary"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
@@ -92,7 +92,7 @@ export function ProductCard({ product }) {
               ₹{product.price.toLocaleString('en-IN')}
             </motion.p>
             <motion.p
-              className="text-sm text-white/60"
+              className="text-sm text-textSecondary"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}

@@ -57,23 +57,23 @@ const lowStock = [
 function ChartBar({ height, label }) {
   return (
     <div className="flex flex-col items-center gap-3">
-      <div className="relative flex h-44 w-10 items-end rounded-3xl bg-white/10">
-        <div className="absolute inset-x-0 bottom-0 rounded-3xl bg-gold" style={{ height: `${height}%` }} />
+      <div className="relative flex h-44 w-10 items-end rounded-3xl bg-blue-100">
+        <div className="absolute inset-x-0 bottom-0 rounded-3xl bg-primary" style={{ height: `${height}%` }} />
       </div>
-      <span className="text-xs uppercase tracking-[0.28em] text-white/60">{label}</span>
+      <span className="text-xs uppercase tracking-[0.28em] text-textSecondary">{label}</span>
     </div>
   );
 }
 
 export default function AdminDashboardPage() {
   return (
-    <div className="min-h-screen bg-navy text-white">
+    <div className="min-h-screen bg-background text-textPrimary">
       <div className="mx-auto grid min-h-screen max-w-7xl grid-cols-1 gap-6 px-6 py-6 md:grid-cols-[280px_1fr] md:px-8">
-        <aside className="space-y-8 rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl">
+        <aside className="space-y-8 rounded-[2rem] border border-border bg-surface p-6 shadow-card backdrop-blur-xl">
           <div className="space-y-3">
-            <p className="text-sm uppercase tracking-[0.35em] text-gold/90">Quantum Tiles</p>
-            <h1 className="text-3xl font-semibold text-white">Admin Dashboard</h1>
-            <p className="text-sm leading-6 text-white/70">Full SaaS control panel for your tile business.</p>
+            <p className="text-sm uppercase tracking-[0.35em] text-primary">Quantum Tiles</p>
+            <h1 className="text-3xl font-semibold text-textPrimary">Admin Dashboard</h1>
+            <p className="text-sm leading-6 text-textSecondary">Full SaaS control panel for your tile business.</p>
           </div>
 
           <nav className="space-y-2">
@@ -81,17 +81,17 @@ export default function AdminDashboardPage() {
               <Link
                 key={item.label}
                 to={item.to}
-                className={`flex w-full items-center justify-between rounded-3xl px-5 py-4 text-left text-sm font-semibold transition ${index === 0 ? 'bg-gold/10 text-white' : 'bg-white/5 text-white/80 hover:bg-white/10 hover:text-white'}`}
+                className={`flex w-full items-center justify-between rounded-3xl px-5 py-4 text-left text-sm font-semibold transition ${index === 0 ? 'bg-blue-50 text-primary' : 'bg-surface text-textSecondary hover:bg-blue-50 hover:text-primary'}`}
               >
                 <span>{item.label}</span>
-                {item.label === 'Orders' && <span className="rounded-full bg-white/10 px-2 py-1 text-xs text-white/80">3</span>}
+                {item.label === 'Orders' && <span className="rounded-full bg-blue-100 px-2 py-1 text-xs text-primary">3</span>}
               </Link>
             ))}
           </nav>
 
-          <div className="rounded-[2rem] border border-white/10 bg-navy/40 p-5">
-            <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Need help?</p>
-            <p className="mt-3 text-sm text-white/70">Contact support for analytics setup or platform questions.</p>
+          <div className="rounded-[2rem] border border-border bg-blue-50 p-5">
+            <p className="text-sm uppercase tracking-[0.32em] text-primary">Need help?</p>
+            <p className="mt-3 text-sm text-textSecondary">Contact support for analytics setup or platform questions.</p>
             <Button variant="ghost" className="mt-4 w-full px-4 py-3 text-sm uppercase tracking-[0.18em]">Support</Button>
           </div>
         </aside>
@@ -99,35 +99,35 @@ export default function AdminDashboardPage() {
         <main className="space-y-6">
           <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {stats.map((stat) => (
-              <Card key={stat.label} className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl">
-                <p className="text-sm uppercase tracking-[0.32em] text-gold/90">{stat.label}</p>
-                <p className="mt-4 text-3xl font-semibold text-white">{stat.value}</p>
-                <p className="mt-2 text-sm text-white/70">{stat.detail}</p>
+              <Card key={stat.label} className="rounded-[2rem] border border-border bg-white p-6 shadow-card backdrop-blur-xl">
+                <p className="text-sm uppercase tracking-[0.32em] text-primary">{stat.label}</p>
+                <p className="mt-4 text-3xl font-semibold text-textPrimary">{stat.value}</p>
+                <p className="mt-2 text-sm text-textSecondary">{stat.detail}</p>
               </Card>
             ))}
           </section>
 
           <section className="grid gap-6 xl:grid-cols-[1.7fr_1fr]">
-            <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl">
+            <Card className="rounded-[2rem] border border-border bg-white p-6 shadow-card backdrop-blur-xl">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Revenue Analytics</p>
-                  <h2 className="mt-3 text-2xl font-semibold text-white">Monthly revenue growth</h2>
+                  <p className="text-sm uppercase tracking-[0.32em] text-primary">Revenue Analytics</p>
+                  <h2 className="mt-3 text-2xl font-semibold text-textPrimary">Monthly revenue growth</h2>
                 </div>
                 <Button variant="ghost" className="text-sm uppercase tracking-[0.18em]">Export</Button>
               </div>
-              <div className="mt-8 overflow-hidden rounded-[2rem] border border-white/10 bg-navy/30 p-6">
-                <div className="mb-6 flex items-center justify-between gap-4 text-white/70">
+              <div className="mt-8 overflow-hidden rounded-[2rem] border border-border bg-surface p-6">
+                <div className="mb-6 flex items-center justify-between gap-4 text-textSecondary">
                   <span>Revenue</span>
                   <span>+18.2%</span>
                 </div>
                 <div className="grid grid-cols-7 gap-4">
                   {revenueSeries.map((item) => (
                     <div key={item.month} className="space-y-3 text-center">
-                      <div className="mx-auto h-44 w-9 rounded-3xl bg-white/10">
-                        <div className="mx-auto h-full w-full rounded-3xl bg-gold" style={{ height: `${item.value}%` }} />
+                      <div className="mx-auto h-44 w-9 rounded-3xl bg-blue-100">
+                        <div className="mx-auto h-full w-full rounded-3xl bg-primary" style={{ height: `${item.value}%` }} />
                       </div>
-                      <span className="text-xs text-white/60">{item.month}</span>
+                      <span className="text-xs text-textSecondary">{item.month}</span>
                     </div>
                   ))}
                 </div>
@@ -135,36 +135,36 @@ export default function AdminDashboardPage() {
             </Card>
 
             <div className="grid gap-6">
-              <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl">
-                <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Sales Trends</p>
-                <h3 className="mt-3 text-2xl font-semibold text-white">Category performance</h3>
+              <Card className="rounded-[2rem] border border-border bg-white p-6 shadow-card backdrop-blur-xl">
+                <p className="text-sm uppercase tracking-[0.32em] text-primary">Sales Trends</p>
+                <h3 className="mt-3 text-2xl font-semibold text-textPrimary">Category performance</h3>
                 <div className="mt-8 space-y-4">
                   {salesTrends.map((item) => (
                     <div key={item.label} className="space-y-2">
-                      <div className="flex items-center justify-between text-sm text-white/70">
+                      <div className="flex items-center justify-between text-sm text-textSecondary">
                         <span>{item.label}</span>
                         <span>{item.value}%</span>
                       </div>
-                      <div className="h-3 rounded-full bg-white/10">
-                        <div className="h-full rounded-full bg-gold" style={{ width: `${item.value}%` }} />
+                      <div className="h-3 rounded-full bg-blue-100">
+                        <div className="h-full rounded-full bg-primary" style={{ width: `${item.value}%` }} />
                       </div>
                     </div>
                   ))}
                 </div>
               </Card>
 
-              <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl">
-                <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Inventory Status</p>
-                <h3 className="mt-3 text-2xl font-semibold text-white">Stock health overview</h3>
+              <Card className="rounded-[2rem] border border-border bg-white p-6 shadow-card backdrop-blur-xl">
+                <p className="text-sm uppercase tracking-[0.32em] text-primary">Inventory Status</p>
+                <h3 className="mt-3 text-2xl font-semibold text-textPrimary">Stock health overview</h3>
                 <div className="mt-8 space-y-4">
                   {inventoryStatus.map((item) => (
                     <div key={item.label} className="space-y-2">
-                      <div className="flex items-center justify-between text-sm text-white/70">
+                      <div className="flex items-center justify-between text-sm text-textSecondary">
                         <span>{item.label}</span>
                         <span>{item.value}%</span>
                       </div>
-                      <div className="h-3 rounded-full bg-white/10">
-                        <div className="h-full rounded-full bg-gold" style={{ width: `${item.value}%` }} />
+                      <div className="h-3 rounded-full bg-blue-100">
+                        <div className="h-full rounded-full bg-primary" style={{ width: `${item.value}%` }} />
                       </div>
                     </div>
                   ))}
@@ -174,17 +174,17 @@ export default function AdminDashboardPage() {
           </section>
 
           <section className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
-            <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl">
+            <Card className="rounded-[2rem] border border-border bg-white p-6 shadow-card backdrop-blur-xl">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Recent Orders</p>
-                  <h3 className="mt-3 text-2xl font-semibold text-white">Latest order activity</h3>
+                  <p className="text-sm uppercase tracking-[0.32em] text-primary">Recent Orders</p>
+                  <h3 className="mt-3 text-2xl font-semibold text-textPrimary">Latest order activity</h3>
                 </div>
                 <Button variant="ghost" className="text-sm uppercase tracking-[0.18em]">View All</Button>
               </div>
-              <div className="mt-6 overflow-hidden rounded-[2rem] border border-white/10 bg-navy/40">
-                <table className="min-w-full text-left text-sm text-white/70">
-                  <thead className="border-b border-white/10 text-white/60">
+              <div className="mt-6 overflow-hidden rounded-[2rem] border border-border bg-surface">
+                <table className="min-w-full text-left text-sm text-textSecondary">
+                  <thead className="border-b border-border text-textPrimary bg-blue-50 font-semibold">
                     <tr>
                       <th className="px-5 py-4">Order</th>
                       <th className="px-5 py-4">Customer</th>
@@ -195,12 +195,12 @@ export default function AdminDashboardPage() {
                   </thead>
                   <tbody>
                     {recentOrders.map((order) => (
-                      <tr key={order.id} className="border-b border-white/10 last:border-none hover:bg-white/5">
-                        <td className="px-5 py-4 font-semibold text-white">{order.id}</td>
+                      <tr key={order.id} className="border-b border-border last:border-none hover:bg-blue-50">
+                        <td className="px-5 py-4 font-semibold text-textPrimary">{order.id}</td>
                         <td className="px-5 py-4">{order.customer}</td>
                         <td className="px-5 py-4">{order.date}</td>
                         <td className="px-5 py-4">{order.status}</td>
-                        <td className="px-5 py-4 text-right font-semibold text-white">{order.total}</td>
+                        <td className="px-5 py-4 text-right font-semibold text-textPrimary">{order.total}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -208,25 +208,25 @@ export default function AdminDashboardPage() {
               </div>
             </Card>
 
-            <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl">
+            <Card className="rounded-[2rem] border border-border bg-white p-6 shadow-card backdrop-blur-xl">
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Low Stock Products</p>
-                  <h3 className="mt-3 text-2xl font-semibold text-white">Reorder before sellout</h3>
+                  <p className="text-sm uppercase tracking-[0.32em] text-primary">Low Stock Products</p>
+                  <h3 className="mt-3 text-2xl font-semibold text-textPrimary">Reorder before sellout</h3>
                 </div>
                 <Button variant="ghost" className="text-sm uppercase tracking-[0.18em]">Manage Stock</Button>
               </div>
               <div className="mt-6 space-y-4">
                 {lowStock.map((item) => (
-                  <div key={item.sku} className="rounded-[1.75rem] border border-white/10 bg-navy/40 p-4">
+                  <div key={item.sku} className="rounded-[1.75rem] border border-border bg-surface p-4">
                     <div className="flex items-center justify-between gap-4">
                       <div>
-                        <p className="font-semibold text-white">{item.name}</p>
-                        <p className="text-sm text-white/60">SKU: {item.sku}</p>
+                        <p className="font-semibold text-textPrimary">{item.name}</p>
+                        <p className="text-sm text-textSecondary">SKU: {item.sku}</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-sm text-white/70">Stock: {item.stock}</p>
-                        <p className="text-sm text-white/70">Reorder: {item.reorder}</p>
+                        <p className="text-sm text-textSecondary">Stock: {item.stock}</p>
+                        <p className="text-sm text-textSecondary">Reorder: {item.reorder}</p>
                       </div>
                     </div>
                   </div>

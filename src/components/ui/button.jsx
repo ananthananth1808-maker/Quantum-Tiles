@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 import { buttonHover } from '../../shared/animations/variants';
 
 export function Button({ children, variant = 'solid', className = '', ...props }) {
-  const base = 'inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-gold/50 relative overflow-hidden';
+  const base = 'inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-primary/50 relative overflow-hidden';
   const styles = {
-    solid: 'bg-gold text-navy shadow-glow hover:shadow-[0_0_30px_rgba(212,175,55,0.6)]',
-    ghost: 'border border-white/15 bg-white/5 text-white hover:bg-white/10 hover:border-white/30',
+    solid: 'bg-primary text-white shadow-lg hover:shadow-card-hover hover:bg-blue-600',
+    ghost: 'border border-border bg-surface text-textPrimary hover:bg-blue-50 hover:border-primary/30',
   };
 
   return (

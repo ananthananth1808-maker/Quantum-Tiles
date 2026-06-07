@@ -3,7 +3,7 @@ import { AppRoutes } from '../shared/routes';
 
 export default function NotFoundPage() {
   return (
-    <div className="grid min-h-screen place-items-center bg-navy px-6 py-16 text-white">
+    <div className="grid min-h-screen place-items-center bg-background px-6 py-16 text-textPrimary">
       <div className="max-w-xl rounded-3xl border border-white/10 bg-slate-950/80 p-12 text-center shadow-2xl shadow-black/20">
         <p className="text-sm uppercase tracking-[0.4em] text-gold">404 error</p>
         <h1 className="mt-6 text-5xl font-semibold">Page not found</h1>

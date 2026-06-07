@@ -21,11 +21,11 @@ export default function CheckoutPage() {
   const total = subtotal + tax + delivery;
 
   return (
-    <div className="min-h-screen bg-navy text-white">
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-navy/95 backdrop-blur-xl">
+    <div className="min-h-screen bg-background text-textPrimary">
+      <header className="sticky top-0 z-40 border-b border-border bg-white backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-8">
           <div>
-            <p className="text-sm uppercase tracking-[0.35em] text-gold/90">Quantum Tiles</p>
+            <p className="text-sm uppercase tracking-[0.35em] text-primary">Quantum Tiles</p>
             <h1 className="text-2xl font-semibold text-white sm:text-3xl">Checkout</h1>
           </div>
           <Button variant="ghost" className="hidden md:inline-flex">Back to Cart</Button>
@@ -37,14 +37,14 @@ export default function CheckoutPage() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="rounded-[2.5rem] border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl"
+          className="rounded-[2.5rem] border border-border bg-white p-6 shadow-card"
         >
           <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Multi-step checkout</p>
+              <p className="text-sm uppercase tracking-[0.32em] text-primary">Multi-step checkout</p>
               <h2 className="mt-3 text-3xl font-semibold text-white">Complete your order with confidence</h2>
             </div>
-            <div className="hidden gap-4 rounded-full bg-navy/50 px-4 py-3 text-sm text-white/70 sm:flex">
+            <div className="hidden gap-4 rounded-full bg-surface px-4 py-3 text-sm text-textSecondary border border-border sm:flex">
               {steps.map((step, index) => (
                 <div key={step} className="flex items-center gap-2">
                   <span className={`flex h-9 w-9 items-center justify-center rounded-full border ${index === activeStep ? 'border-gold bg-gold text-navy' : 'border-white/15 text-white/70'}`}>{index + 1}</span>
@@ -59,10 +59,10 @@ export default function CheckoutPage() {
               <Card className="space-y-6 p-8">
                 <div className="flex items-center justify-between gap-4">
                   <div>
-                    <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Shipping Information</p>
-                    <h3 className="mt-3 text-2xl font-semibold text-white">Enter your delivery details</h3>
+                    <p className="text-sm uppercase tracking-[0.32em] text-primary">Shipping Information</p>
+                    <h3 className="mt-3 text-2xl font-semibold text-textPrimary">Enter your delivery details</h3>
                   </div>
-                  <div className="rounded-full bg-white/5 px-4 py-2 text-sm text-white/70">Step 1 of 3</div>
+                  <div className="rounded-full bg-surface px-4 py-2 text-sm text-textSecondary border border-border">Step 1 of 3</div>
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2">
@@ -132,10 +132,10 @@ export default function CheckoutPage() {
               <Card className="space-y-6 p-8">
                 <div className="flex items-center justify-between gap-4">
                   <div>
-                    <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Payment Method</p>
-                    <h3 className="mt-3 text-2xl font-semibold text-white">Choose a secure payment option</h3>
+                    <p className="text-sm uppercase tracking-[0.32em] text-primary">Payment Method</p>
+                    <h3 className="mt-3 text-2xl font-semibold text-textPrimary">Choose a secure payment option</h3>
                   </div>
-                  <div className="rounded-full bg-white/5 px-4 py-2 text-sm text-white/70">Step 2 of 3</div>
+                  <div className="rounded-full bg-surface px-4 py-2 text-sm text-textSecondary border border-border">Step 2 of 3</div>
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-3">

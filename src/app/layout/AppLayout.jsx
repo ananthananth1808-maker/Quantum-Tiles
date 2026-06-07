@@ -13,7 +13,7 @@ export default function AppLayout() {
   const role = isAdmin() ? 'admin' : isCustomer() ? 'customer' : 'guest';
 
   return (
-    <div className="min-h-screen bg-navy text-white">
+    <div className="min-h-screen bg-background text-textPrimary">
       <Navbar onOpenMobile={() => setDrawerOpen(true)} />
       {authenticated ? (
         <Sidebar role={role} collapsed={sidebarCollapsed} onToggle={() => setSidebarCollapsed((value) => !value)} />

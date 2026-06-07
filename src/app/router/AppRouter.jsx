@@ -29,6 +29,7 @@ const AdminInvoicesPage = lazy(() => import('../../pages/AdminInvoicesPage'));
 const AdminAnalyticsPage = lazy(() => import('../../pages/AdminAnalyticsPage'));
 const AIVisualizerPage = lazy(() => import('../../pages/AIVisualizerPage'));
 const DesignExplorerPage = lazy(() => import('../../pages/DesignExplorerPage'));
+const TileVisualizerPage = lazy(() => import('../../pages/TileVisualizerPage'));
 const SearchPage = lazy(() => import('../../pages/SearchPage'));
 const NotificationsPage = lazy(() => import('../../pages/NotificationsPage'));
 const NotFoundPage = lazy(() => import('../../pages/NotFoundPage'));
@@ -91,6 +92,7 @@ export default function AppRouter() {
             />
             <Route path={AppRoutes.AI_VISUALIZER} element={<AIVisualizerPage />} />
             <Route path={AppRoutes.DESIGN_EXPLORER} element={<DesignExplorerPage />} />
+            <Route path={AppRoutes.TILE_VISUALIZER} element={<TileVisualizerPage />} />
             <Route path={AppRoutes.NOT_FOUND} element={<NotFoundPage />} />
           </Route>
           <Route path={AppRoutes.LOGIN} element={<LoginPage />} />

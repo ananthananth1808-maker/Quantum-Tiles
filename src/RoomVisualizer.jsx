@@ -58,8 +58,8 @@ export default function RoomVisualizer() {
   };
 
   return (
-    <div className="min-h-screen bg-navy text-white">
-      <header className="sticky top-0 z-40 border-b border-white/10 bg-navy/95 backdrop-blur-xl">
+    <div className="min-h-screen bg-background text-textPrimary">
+      <header className="sticky top-0 z-40 border-b border-border bg-white backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-8">
           <div>
             <p className="text-sm uppercase tracking-[0.35em] text-gold/90">Quantum Tiles</p>
@@ -122,7 +122,7 @@ export default function RoomVisualizer() {
                     <div className="p-5">
                       <p className="text-sm uppercase tracking-[0.32em] text-gold/90">After</p>
                     </div>
-                    <div className="relative h-[360px] bg-navy/20">
+                    <div className="relative h-[360px] bg-blue-50">
                       <img src={preview} alt="Room after" className="h-full w-full object-cover opacity-90" />
                       <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent" />
                       <div className="absolute bottom-6 left-6 rounded-3xl bg-black/50 px-4 py-3 backdrop-blur-xl text-white">
@@ -180,7 +180,7 @@ export default function RoomVisualizer() {
             <Card className="space-y-6 p-6 backdrop-blur-xl bg-white/10">
               <div className="space-y-4">
                 <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Quick Actions</p>
-                <div className="rounded-[2rem] border border-white/10 bg-navy/60 p-5">
+                <div className="rounded-[2rem] border border-border bg-surface p-5">
                   <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Current Tile</p>
                   <p className="mt-3 text-xl font-semibold text-white">{appliedTile?.name || 'Quantum Pearl Mosaic'}</p>
                   <p className="mt-2 text-sm text-white/70">This AI-picked tile is optimized for contrast, tone, and room atmosphere.</p>

@@ -30,7 +30,7 @@ const orderStatus = [
 
 export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-navy text-white">
+    <div className="min-h-screen bg-background text-textPrimary">
       <div className="mx-auto grid min-h-screen max-w-7xl grid-cols-1 gap-6 px-6 py-6 md:grid-cols-[280px_1fr] md:px-8">
         <aside className="space-y-6 rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl">
           <div className="space-y-3">
@@ -52,7 +52,7 @@ export default function DashboardPage() {
             ))}
           </nav>
 
-          <div className="rounded-[2rem] border border-white/10 bg-navy/50 p-5">
+          <div className="rounded-[2rem] border border-border bg-surface p-5">
             <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Download Invoice</p>
             <p className="mt-3 text-sm text-white/70">Access the latest order invoice or download your purchase history.</p>
             <Button className="mt-4 w-full px-4 py-3 text-sm font-semibold uppercase tracking-[0.18em]">Download</Button>
@@ -84,7 +84,7 @@ export default function DashboardPage() {
                 <Button variant="ghost" className="text-sm uppercase tracking-[0.18em]">View All Orders</Button>
               </div>
 
-              <div className="mt-6 overflow-hidden rounded-[2rem] border border-white/10 bg-navy/40">
+              <div className="mt-6 overflow-hidden rounded-[2rem] border border-border bg-surface">
                 <table className="min-w-full text-left text-sm text-white/70">
                   <thead className="border-b border-white/10 text-white/60">
                     <tr>
@@ -121,7 +121,7 @@ export default function DashboardPage() {
 
               <div className="mt-6 space-y-4">
                 {orderStatus.map((status) => (
-                  <div key={status.label} className="rounded-[2rem] border border-white/10 bg-navy/40 p-4">
+                  <div key={status.label} className="rounded-[2rem] border border-border bg-white p-4 shadow-sm">
                     <div className="flex items-center justify-between gap-4">
                       <div>
                         <p className="text-sm uppercase tracking-[0.32em] text-gold/90">{status.label}</p>
