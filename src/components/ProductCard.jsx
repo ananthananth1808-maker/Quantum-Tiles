@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { addToCart } from '../entities/cart/model/cartService';
-import { hoverLift } from '../shared/animations/variants';
+import { productCardFadeIn, productCardHover, imageZoom } from '../shared/animations/variants';
 
 export function ProductCard({ product }) {
   const navigate = useNavigate();
@@ -18,17 +18,23 @@ export function ProductCard({ product }) {
 
   return (
     <motion.article
-      variants={hoverLift}
-      whileHover="whileHover"
+      variants={productCardFadeIn}
+      whileHover={productCardHover.whileHover}
+      whileTap={productCardHover.whileTap}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
       className="group overflow-hidden rounded-[2rem] border border-border bg-white shadow-card transition-shadow duration-300"
     >
       <div className="relative overflow-hidden bg-gray-100">
         <motion.img
           src={product.image}
           alt={product.name}
-          className="h-80 w-full object-cover transition-transform duration-700"
-          whileHover={{ scale: 1.1 }}
-          transition={{ duration: 0.7 }}
+          className="h-80 w-full object-cover"
+          variants={imageZoom}
+          initial="initial"
+          whileHover="whileHover"
+          transition={{ duration: 0.6, ease: 'easeOut' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
         <motion.button

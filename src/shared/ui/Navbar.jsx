@@ -5,14 +5,12 @@ import { isAdmin, isAuthenticated, isCustomer } from '../../entities/auth/model/
 import ProfileDropdown from './ProfileDropdown';
 import { Search, ShoppingCart, Heart, Bell, Menu } from 'lucide-react';
 import { Button } from '../../components/ui/button';
-import { fadeInDown, staggerContainer, staggerItem } from '../../shared/animations/variants';
+import { navbarSlideDown, staggerContainer, staggerItem } from '../../shared/animations/variants';
 
 const centerLinks = [
   { label: 'Home', to: AppRoutes.HOME },
   { label: 'Products', to: AppRoutes.PRODUCTS },
-  { label: 'Tile Visualizer', to: AppRoutes.TILE_VISUALIZER },
   { label: 'AI Visualizer', to: AppRoutes.AI_VISUALIZER },
-  { label: 'Design Explorer', to: AppRoutes.DESIGN_EXPLORER },
   { label: 'Categories', to: AppRoutes.CATEGORIES },
   { label: 'About', to: AppRoutes.ABOUT },
 ];
@@ -27,7 +25,7 @@ export default function Navbar({ onOpenMobile }) {
     <motion.header
       initial="hidden"
       animate="visible"
-      variants={fadeInDown}
+      variants={navbarSlideDown}
       className="glass-navbar fixed inset-x-0 top-0 z-50"
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-4 px-4 md:px-8">

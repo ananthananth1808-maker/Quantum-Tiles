@@ -40,7 +40,7 @@ body {
 
 /* Glass effect for premium navbar */
 .glass-navbar {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(217, 216, 223, 0.85);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid #E5E7EB;
 }

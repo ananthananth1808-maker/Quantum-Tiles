@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { buttonHover } from '../../shared/animations/variants';
+import { premiumButtonHover, ghostButtonHover } from '../../shared/animations/variants';
 
 export function Button({ children, variant = 'solid', className = '', ...props }) {
   const base = 'inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition-all focus:outline-none focus:ring-2 focus:ring-primary/50 relative overflow-hidden';
@@ -8,9 +8,11 @@ export function Button({ children, variant = 'solid', className = '', ...props }
     ghost: 'border border-border bg-surface text-textPrimary hover:bg-blue-50 hover:border-primary/30',
   };
 
+  const animationVariants = variant === 'solid' ? premiumButtonHover : ghostButtonHover;
+
   return (
     <motion.button
-      variants={buttonHover}
+      variants={animationVariants}
       whileHover="whileHover"
       whileTap="whileTap"
       className={`${base} ${styles[variant]} ${className}`}

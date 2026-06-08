@@ -4,7 +4,14 @@ import { Button } from './components/ui/button';
 import { Card } from './components/ui/card';
 import { ProductCard } from './components/ProductCard';
 import { products, categories, colors, sizes, materials } from './entities/products/model/products';
-import { pageVariants, fadeInUp, staggerContainer, staggerItem } from './shared/animations/variants';
+import {
+  pageVariants,
+  scrollRevealFadeUp,
+  scrollRevealFadeLeft,
+  staggerContainer,
+  staggerItemFadeUp,
+  productGridStagger,
+} from './shared/animations/variants';
 
 export default function ProductListing() {
   const [search, setSearch] = useState('');
@@ -38,18 +45,20 @@ export default function ProductListing() {
       <header className="sticky top-0 z-40 border-b border-border glass-navbar">
         <motion.div
           className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-8"
-          variants={fadeInUp}
+          variants={scrollRevealFadeUp}
+          initial="hidden"
+          animate="visible"
         >
           <div>
             <motion.p
               className="text-sm uppercase tracking-[0.35em] text-primary"
-              variants={staggerItem}
+              variants={staggerItemFadeUp}
             >
               Quantum Tiles
             </motion.p>
             <motion.h1
               className="text-2xl font-semibold tracking-tight text-textPrimary sm:text-3xl"
-              variants={staggerItem}
+              variants={staggerItemFadeUp}
             >
               Premium Product Showcase
             </motion.h1>
@@ -62,7 +71,10 @@ export default function ProductListing() {
         <div className="grid gap-8 lg:grid-cols-[320px_1fr]">
           <motion.aside
             className="space-y-6"
-            variants={fadeInUp}
+            variants={scrollRevealFadeLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
           >
             <Card className="space-y-6">
               <div>
@@ -98,7 +110,7 @@ export default function ProductListing() {
                     <motion.button
                       key={item}
                       type="button"
-                      variants={staggerItem}
+                      variants={staggerItemFadeUp}
                       onClick={() => setCategory(item)}
                       whileHover={{ scale: 1.02 }}
                       className={`rounded-3xl border px-4 py-3 text-left text-sm transition ${category === item ? 'border-primary bg-blue-50 text-primary' : 'border-border text-textSecondary hover:border-primary/30 hover:text-textPrimary'}`}
@@ -109,7 +121,7 @@ export default function ProductListing() {
                 </div>
               </motion.div>
 
-              <motion.div variants={fadeInUp} className="space-y-4">
+              <motion.div variants={scrollRevealFadeUp} className="space-y-4" initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <div className="flex items-center justify-between">
                   <p className="text-sm uppercase tracking-[0.32em] text-primary">Price Range</p>
                   <span className="text-sm text-textSecondary">₹{price.toLocaleString('en-IN')}</span>
@@ -125,14 +137,14 @@ export default function ProductListing() {
                 />
               </motion.div>
 
-              <motion.div variants={fadeInUp}>
+              <motion.div variants={scrollRevealFadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <p className="mb-4 text-sm uppercase tracking-[0.32em] text-primary">Color</p>
                 <div className="flex flex-wrap gap-3">
                   {['All', ...colors].map((item) => (
                     <motion.button
                       key={item}
                       type="button"
-                      variants={staggerItem}
+                      variants={staggerItemFadeUp}
                       onClick={() => setColor(item)}
                       whileHover={{ scale: 1.05 }}
                       className={`rounded-full px-4 py-2 text-sm transition ${color === item ? 'bg-primary text-white' : 'bg-surface text-textSecondary border border-border hover:bg-blue-50 hover:text-primary'}`}
@@ -143,7 +155,7 @@ export default function ProductListing() {
                 </div>
               </motion.div>
 
-              <motion.div variants={fadeInUp}>
+              <motion.div variants={scrollRevealFadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <p className="mb-4 text-sm uppercase tracking-[0.32em] text-primary">Tile Size</p>
                 <div className="grid gap-3">
                   {['All', ...sizes].map((item) => (
@@ -161,7 +173,7 @@ export default function ProductListing() {
                 </div>
               </motion.div>
 
-              <motion.div variants={fadeInUp}>
+              <motion.div variants={scrollRevealFadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
                 <p className="mb-4 text-sm uppercase tracking-[0.32em] text-primary">Material</p>
                 <div className="grid gap-3">
                   {['All', ...materials].map((item) => (
@@ -184,7 +196,10 @@ export default function ProductListing() {
           <section className="space-y-8">
             <motion.div
               className="rounded-[2rem] border border-border bg-white p-8 shadow-card backdrop-blur-xl"
-              variants={fadeInUp}
+              variants={scrollRevealFadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
             >
               <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div>
@@ -200,12 +215,13 @@ export default function ProductListing() {
 
             <motion.div
               className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3"
-              variants={staggerContainer}
+              variants={productGridStagger}
               initial="hidden"
-              animate="visible"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.1 }}
             >
               {filteredProducts.map((product) => (
-                <motion.div key={product.id} variants={staggerItem}>
+                <motion.div key={product.id} variants={staggerItemFadeUp}>
                   <ProductCard product={product} />
                 </motion.div>
               ))}
