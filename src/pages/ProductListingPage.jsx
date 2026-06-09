@@ -7,6 +7,7 @@ import { SearchBar } from "../components/SearchBar";
 import { FilterPanel } from "../components/FilterPanel";
 import { SortOptions } from "../components/SortOptions";
 import { EmptyState } from "../components/EmptyState";
+import { motion } from "framer-motion";
 
 export default function ProductListingPage() {
   const navigate = useNavigate();
@@ -110,8 +111,14 @@ export default function ProductListingPage() {
   return (
     <div className="bg-red-50 min-h-screen py-12 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
+       
         {/* Header */}
-        <div className="mb-10">
+        <motion.div
+  className="mb-10"
+  initial={{ opacity: 0, y: 40 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+>
           <h1 className="text-4xl font-bold text-center mb-2 text-gray-800">
             Our Products
           </h1>
@@ -127,7 +134,7 @@ export default function ProductListingPage() {
               placeholder="Search products by name or description..."
             />
           </div>
-        </div>
+       </motion.div>
 
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 md:gap-8">

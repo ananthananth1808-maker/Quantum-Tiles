@@ -6,6 +6,7 @@ import { ProtectedRoute } from './ProtectedRoute';
 import { AdminRoute } from './AdminRoute';
 import { CustomerRoute } from './CustomerRoute';
 import Loader from '../../shared/ui/Loader';
+import TestimonialsPage from "../../pages/TestimonialsPage";
 
 const HomePage = lazy(() => import('../../pages/HomePage'));
 const LoginPage = lazy(() => import('../../pages/LoginPage'));
@@ -45,6 +46,10 @@ export default function AppRouter() {
             <Route path={AppRoutes.PRODUCTS} element={<ProductListingPage />} />
             <Route path={AppRoutes.PRODUCT_DETAILS} element={<ProductDetailsPage />} />
             <Route path={AppRoutes.CATEGORIES} element={<CategoriesPage />} />
+            <Route
+  path="/testimonials"
+  element={<TestimonialsPage />}
+/>
             <Route path={AppRoutes.ABOUT} element={<AboutPage />} />
             <Route path={AppRoutes.SEARCH} element={<SearchPage />} />
             <Route path={AppRoutes.NOTIFICATIONS} element={<NotificationsPage />} />

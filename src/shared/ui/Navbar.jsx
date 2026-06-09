@@ -13,6 +13,7 @@ const centerLinks = [
   { label: 'Products', to: AppRoutes.PRODUCTS },
   { label: 'AI Visualizer', to: AppRoutes.AI_VISUALIZER },
   { label: 'Categories', to: AppRoutes.CATEGORIES },
+  { label: 'Testimonials', to: AppRoutes.TESTIMONIALS },
   { label: 'About', to: AppRoutes.ABOUT },
 ];
 

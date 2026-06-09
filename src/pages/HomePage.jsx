@@ -11,14 +11,29 @@ import {
 
 export default function HomePage() {
   return (
+    
     <main className="space-y-10 py-10">
       <motion.section
-        className="mx-auto max-w-6xl rounded-3xl border border-border bg-surface p-10 shadow-card"
+  className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl border border-border shadow-card min-h-[700px]"
         initial="hidden"
         animate="visible"
         variants={staggerContainer}
+        
       >
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center ">
+         <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="auto"
+    className="absolute inset-0 h-full w-full object-cover z-0"
+  >
+    <source src="/videos/hero.mp4" type="video/mp4" />
+  </video>
+
+  <div className="absolute inset-0 bg-black/30 z-[1]" />
+        
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center relative z-20 p-10 ">
           {/* Left Content */}
           <div>
             {/* Tag */}
@@ -43,7 +58,7 @@ export default function HomePage() {
 
             {/* Subheading */}
             <motion.p
-              className="mt-6 max-w-xl text-lg leading-8 text-textSecondary"
+              className="mt-6 max-w-xl text-lg leading-8 text-red"
               variants={heroSubheading}
               initial="hidden"
               animate="visible"
@@ -148,6 +163,39 @@ export default function HomePage() {
           </motion.div>
         </div>
       </motion.section>
+
+      {/* Showcase Video Section */}
+<motion.section
+  initial={{ opacity: 0, y: 80 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.8 }}
+  className="mx-auto max-w-6xl px-4"
+>
+  <div className="overflow-hidden rounded-3xl shadow-2xl border border-gray-200">
+    <video
+    controls
+    autoPlay
+    muted
+    loop
+    className="w-full h-[500px] rounded-3xl"
+  >
+    <source src="/videos/product.mp4" type="video/mp4" />
+  </video>
+  </div>
+
+  <div className="text-center mt-8">
+    <h2 className="text-4xl font-bold text-textPrimary">
+      Experience Luxury Tiles
+    </h2>
+
+    <p className="mt-4 text-lg text-textSecondary max-w-3xl mx-auto">
+      Explore our premium collection of marble, ceramic, and designer tiles
+      crafted to transform modern interiors.
+    </p>
+  </div>
+</motion.section>
+       
     </main>
   );
 }

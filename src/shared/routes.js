@@ -3,6 +3,7 @@ export const AppRoutes = {
   PRODUCTS: '/products',
   PRODUCT_DETAILS: '/products/:productId',
   CATEGORIES: '/categories',
+  TESTIMONIALS: '/testimonials',
   ABOUT: '/about',
   SETTINGS: '/settings',
   LOGIN: '/login',
