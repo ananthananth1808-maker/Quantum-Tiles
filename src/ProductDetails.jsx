@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, memo } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Button } from './components/ui/button';
 import { Card } from './components/ui/card';
-import { addToCart } from './entities/cart/model/cartService';
+import { LazyImage } from './components/LazyImage';
+import { ImageSkeleton } from './components/LazyImage';
+import { useCart } from './entities/cart/model/CartProvider';
+import { useToast } from './shared/ui/ToastProvider';
 import { getProductById } from './entities/products/model/products';
 
 const tabs = ['Description', 'Specifications', 'Reviews'];
@@ -11,9 +14,13 @@ const tabs = ['Description', 'Specifications', 'Reviews'];
 export default function ProductDetails() {
   const { productId } = useParams();
   const navigate = useNavigate();
+  const { addToCart, cartItems } = useCart();
+  const { addToast } = useToast();
   const product = getProductById(productId);
   const [activeImage, setActiveImage] = useState(product?.images?.[0] ?? '');
   const [activeTab, setActiveTab] = useState('Description');
+
+  console.log('ProductDetails mounted', { productId, productType: typeof productId, product });
 
   useEffect(() => {
     if (product?.images?.length) {
@@ -21,6 +28,17 @@ export default function ProductDetails() {
     }
   }, [product]);
 
+  const handleAddToCart = () => {
+    console.log('Add to Cart clicked', { product, productId });
+    if (!product) {
+      console.error('Product not found - cannot add to cart');
+      addToast('Product not found', 'error');
+      return;
+    }
+    console.log('Adding to cart:', product.name, product.id);
+    addToCart(product, 1);
+    addToast(`${product.name} added to cart!`, 'success');
+  };
   if (!product) {
     return (
       <div className="min-h-screen bg-background text-textPrimary">
@@ -58,19 +76,28 @@ export default function ProductDetails() {
               transition={{ duration: 0.7 }}
               className="overflow-hidden rounded-[2.5rem] border border-white/10 bg-white/5 shadow-glow"
             >
-              <img src={activeImage} alt={product.name} className="h-[560px] w-full object-cover object-center" />
+              <LazyImage
+                src={activeImage}
+                alt={product.name}
+                className="h-[560px] w-full object-cover object-center"
+              />
             </motion.div>
 
             <div className="grid gap-4 sm:grid-cols-4">
               {product.images.map((image) => (
-                <button
+                <motion.button
                   key={image}
                   type="button"
                   onClick={() => setActiveImage(image)}
                   className={`overflow-hidden rounded-3xl border transition ${activeImage === image ? 'border-gold ring-2 ring-gold/20' : 'border-white/10 hover:border-white/20'}`}
+                  whileHover={{ scale: 1.05 }}
                 >
-                  <img src={image} alt="Thumbnail" className="h-28 w-full object-cover transition-all duration-500 hover:scale-105" />
-                </button>
+                  <LazyImage
+                    src={image}
+                    alt="Thumbnail"
+                    className="h-28 w-full object-cover transition-all duration-500"
+                  />
+                </motion.button>
               ))}
             </div>
           </section>
@@ -115,24 +142,33 @@ export default function ProductDetails() {
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
-                <Button
-                  className="w-full px-6 py-4 text-base font-semibold uppercase tracking-[0.18em]"
-                  onClick={() => {
-                    addToCart(product);
-                    navigate('/customer/cart');
-                  }}
-                >
-                  Add To Cart
-                </Button>
-                <Button variant="ghost" className="w-full px-6 py-4 text-base font-semibold uppercase tracking-[0.18em] text-white/90">
-                  Buy Now
-                </Button>
-              </div>
+  <Button
+    className="w-full px-6 py-4 text-base font-semibold uppercase tracking-[0.18em]"
+    disabled={!product}
+    onClick={handleAddToCart}
+  >
+    Add To Cart
+  </Button>
 
-              <div className="flex flex-wrap gap-3">
-                <Button variant="ghost" className="px-6 py-3 text-sm uppercase tracking-[0.18em]">Wishlist</Button>
-                <Button variant="ghost" className="px-6 py-3 text-sm uppercase tracking-[0.18em]">View In Room</Button>
-              </div>
+  <Button
+    variant="ghost"
+    className="w-full px-6 py-4 text-base font-semibold uppercase tracking-[0.18em] text-white/90"
+    disabled={!product}
+    onClick={() => {
+      console.log('Buy Now clicked', { product, productId });
+      if (!product) {
+        console.error('Product not found - cannot proceed to checkout');
+        addToast('Product not found', 'error');
+        return;
+      }
+      console.log('Adding to cart and navigating to cart:', product.name);
+      addToCart(product, 1);
+      navigate('/cart');
+    }}
+  >
+    Buy Now
+  </Button>
+</div>
             </Card>
 
             <Card className="p-6">

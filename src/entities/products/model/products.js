@@ -233,3 +233,6 @@ export const sizes = ['12" x 24"', '18" x 18"', '24" x 24"', '24" x 48"', '36" x
 export const materials = ['Polished Marble', 'Textured Slate', 'Glazed Ceramic', 'Porcelain', 'Honed Granite', 'Glass Mosaic'];
 
 export const getProductById = (id) => products.find((product) => product.id === Number(id));
+export const productKeys = {
+  all: ["products"],
+};

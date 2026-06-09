@@ -14,6 +14,7 @@ const ProductListingPage = lazy(() => import('../../pages/ProductListingPage'));
 const ProductDetailsPage = lazy(() => import('../../pages/ProductDetailsPage'));
 const CartPage = lazy(() => import('../../pages/CartPage'));
 const CheckoutPage = lazy(() => import('../../pages/CheckoutPage'));
+const PaymentPage = lazy(() => import('../../pages/PaymentPage'));
 const CategoriesPage = lazy(() => import('../../pages/CategoriesPage'));
 const AboutPage = lazy(() => import('../../pages/AboutPage'));
 const SettingsPage = lazy(() => import('../../pages/SettingsPage'));
@@ -50,6 +51,7 @@ export default function AppRouter() {
             <Route path={AppRoutes.SETTINGS} element={<SettingsPage />} />
             <Route path={AppRoutes.CART} element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
             <Route path={AppRoutes.CHECKOUT} element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
+            <Route path="/payment" element={<ProtectedRoute><PaymentPage /></ProtectedRoute>} />
             <Route
               path={AppRoutes.CUSTOMER_DASHBOARD}
               element={<CustomerRoute><CustomerDashboardPage /></CustomerRoute>}

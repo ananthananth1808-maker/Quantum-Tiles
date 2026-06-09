@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { AppRoutes } from '../routes';
 import { isAdmin, isAuthenticated, isCustomer } from '../../entities/auth/model/authService';
+import { useCart } from '../../entities/cart/model/CartProvider';
 import ProfileDropdown from './ProfileDropdown';
 import { Search, ShoppingCart, Heart, Bell, Menu } from 'lucide-react';
 import { Button } from '../../components/ui/button';
@@ -20,8 +21,10 @@ export default function Navbar({ onOpenMobile }) {
   const admin = isAdmin();
   const customer = isCustomer();
   const role = admin ? 'admin' : customer ? 'customer' : 'guest';
+  const { totalItems } = useCart();
 
   return (
+    
     <motion.header
       initial="hidden"
       animate="visible"
@@ -101,13 +104,15 @@ export default function Navbar({ onOpenMobile }) {
               className="relative inline-flex h-11 w-11 items-center justify-center rounded-3xl border border-border bg-surface text-textPrimary transition hover:bg-blue-50 hover:border-primary/30"
             >
               <ShoppingCart className="h-5 w-5" />
-              <motion.span
-                className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1.5 text-[10px] font-semibold text-white"
-                animate={{ scale: [1, 1.15, 1] }}
-                transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 3 }}
-              >
-                3
-              </motion.span>
+              {totalItems > 0 && (
+                <motion.span
+                  className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1.5 text-[10px] font-semibold text-white"
+                  animate={{ scale: [1, 1.15, 1] }}
+                  transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 3 }}
+                >
+                  {totalItems}
+                </motion.span>
+              )}
             </Link>
           </motion.div>
 

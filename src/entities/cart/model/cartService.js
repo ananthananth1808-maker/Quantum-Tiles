@@ -1,4 +1,9 @@
 const CART_STORAGE_KEY = 'quantum_tiles_cart';
+const CART_UPDATE_EVENT = 'cart-update';
+
+const dispatchCartUpdate = () => {
+  window.dispatchEvent(new Event(CART_UPDATE_EVENT));
+};
 
 const loadCart = () => {
   try {
@@ -12,6 +17,7 @@ const loadCart = () => {
 
 const saveCart = (cart) => {
   localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+  dispatchCartUpdate();
   return cart;
 };
 

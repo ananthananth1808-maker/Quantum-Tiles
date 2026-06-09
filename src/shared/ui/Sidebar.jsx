@@ -35,14 +35,14 @@ export default function Sidebar({ role = 'customer', collapsed = false, onToggle
     <motion.aside
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
-      className="fixed left-0 top-[5rem] hidden h-[calc(100vh-5rem)] flex-col overflow-hidden border-r border-white/10 bg-slate-950/95 p-4 shadow-2xl shadow-black/30 backdrop-blur-xl md:flex"
+      className="fixed left-0 top-[5rem] hidden h-[calc(100vh-5rem)] flex-col overflow-hidden border-r border-white/10 bg-slate-950/95 p-4 shadow-2xl shadow-black/30 backdrop-blur-xl md:flex "
       style={{ width: collapsed ? 80 : 280 }}
     >
       <div className="mb-6 flex items-center gap-3 px-2">
-        <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-gold text-navy">QT</div>
+        <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-gold text-white">QT</div>
         {!collapsed ? (
           <div>
-            <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Quantum Tiles</p>
+            <p className="text-sm uppercase tracking-[0.32em] text-white">Quantum Tiles</p>
             <p className="text-xs text-white/60">Premium workspace</p>
           </div>
         ) : null}

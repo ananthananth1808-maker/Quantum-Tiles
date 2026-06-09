@@ -30,13 +30,13 @@ const orderStatus = [
 
 export default function DashboardPage() {
   return (
-    <div className="min-h-screen bg-background text-textPrimary">
-      <div className="mx-auto grid min-h-screen max-w-7xl grid-cols-1 gap-6 px-6 py-6 md:grid-cols-[280px_1fr] md:px-8">
-        <aside className="space-y-6 rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl">
-          <div className="space-y-3">
+    <div className=" bg-blue-200 text-black w-screen h-100% overflow-auto z-50-hidden y-50-hidden border-black">
+      <div className="mx-auto grid min-h-screen max-w-7xl grid-cols-1 gap-6 px-6 py-6 md:grid-cols-[280px_1fr] md:px-8  relative z-50-hidden border-white/50">
+        <aside className="relative z-50-hidden y-50-hidden x-100-hidden space-y-6 rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl">
+          <div className="space-y-3 z-50-hidden ">
             <p className="text-sm uppercase tracking-[0.35em] text-gold/90">Quantum Tiles</p>
-            <h2 className="text-3xl font-semibold text-white">Customer Dashboard</h2>
-            <p className="text-sm leading-6 text-white/70">Overview of your orders, wishlist, and saved designs.</p>
+            <h2 className="text-3xl font-semibold text-black">Customer Dashboard</h2>
+            <p className="text-sm leading-6 text-black">Overview of your orders, wishlist, and saved designs.</p>
           </div>
 
           <nav className="space-y-2">
@@ -44,22 +44,22 @@ export default function DashboardPage() {
               <Link
                 key={item.label}
                 to={item.to}
-                className="flex w-full items-center justify-between rounded-3xl bg-white/5 px-5 py-4 text-left text-sm font-semibold text-white/80 transition hover:bg-white/10 hover:text-white"
+                className="flex w-full items-center justify-between rounded-3xl bg-black/5 px-5 py-4 text-left text-sm font-semibold text-black/80 transition hover:bg-red/10 hover:text-black"
               >
                 <span>{item.label}</span>
-                {item.badge ? <span className="rounded-full bg-white/10 px-2 py-1 text-xs text-white/80">{item.badge}</span> : null}
+                {item.badge ? <span className="rounded-full bg-white/10 px-2 py-1 text-xs text-black/80">{item.badge}</span> : null}
               </Link>
             ))}
           </nav>
 
           <div className="rounded-[2rem] border border-border bg-surface p-5">
             <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Download Invoice</p>
-            <p className="mt-3 text-sm text-white/70">Access the latest order invoice or download your purchase history.</p>
+            <p className="mt-3 text-sm text-black">Access the latest order invoice or download your purchase history.</p>
             <Button className="mt-4 w-full px-4 py-3 text-sm font-semibold uppercase tracking-[0.18em]">Download</Button>
           </div>
         </aside>
 
-        <main className="space-y-6">
+        <main className="relative z-10 space-y-6 overflow-hidden">
           <section className="grid gap-6 md:grid-cols-3">
             {stats.map((stat) => (
               <Card key={stat.label} className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-glow backdrop-blur-xl">
@@ -67,7 +67,7 @@ export default function DashboardPage() {
                   <div className="rounded-3xl bg-white/5 p-4 text-2xl">{stat.icon}</div>
                   <div className="text-right">
                     <p className="text-sm uppercase tracking-[0.32em] text-gold/90">{stat.label}</p>
-                    <p className="mt-3 text-3xl font-semibold text-white">{stat.value}</p>
+                    <p className="mt-3 text-3xl font-semibold text-black">{stat.value}</p>
                   </div>
                 </div>
               </Card>
@@ -79,7 +79,7 @@ export default function DashboardPage() {
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Recent Orders</p>
-                  <h3 className="mt-3 text-2xl font-semibold text-white">Latest purchases</h3>
+                  <h3 className="mt-3 text-2xl font-semibold text-black">Latest purchases</h3>
                 </div>
                 <Button variant="ghost" className="text-sm uppercase tracking-[0.18em]">View All Orders</Button>
               </div>
@@ -98,11 +98,11 @@ export default function DashboardPage() {
                   <tbody>
                     {recentOrders.map((order) => (
                       <tr key={order.id} className="border-b border-white/10 last:border-none">
-                        <td className="px-5 py-4 font-semibold text-white">{order.id}</td>
-                        <td className="px-5 py-4">{order.product}</td>
-                        <td className="px-5 py-4">{order.date}</td>
-                        <td className="px-5 py-4">{order.status}</td>
-                        <td className="px-5 py-4 text-right font-semibold text-white">{order.amount}</td>
+                        <td className="px-5 py-4 font-semibold text-black">{order.id}</td>
+                        <td className="px-5 py-4 text-black">{order.product}</td>
+                        <td className="px-5 py-4 text-black">{order.date}</td>
+                        <td className="px-5 py-4 text-black">{order.status}</td>
+                        <td className="px-5 py-4 text-right font-semibold text-black">{order.amount}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -114,7 +114,7 @@ export default function DashboardPage() {
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Order Status</p>
-                  <h3 className="mt-3 text-2xl font-semibold text-white">Current progress</h3>
+                  <h3 className="mt-3 text-2xl font-semibold text-black">Current progress</h3>
                 </div>
                 <Button variant="ghost" className="text-sm uppercase tracking-[0.18em]">Track</Button>
               </div>
@@ -125,7 +125,7 @@ export default function DashboardPage() {
                     <div className="flex items-center justify-between gap-4">
                       <div>
                         <p className="text-sm uppercase tracking-[0.32em] text-gold/90">{status.label}</p>
-                        <p className="mt-2 text-xl font-semibold text-white">{status.count} orders</p>
+                        <p className="mt-2 text-xl font-semibold text-black">{status.count} orders</p>
                       </div>
                       <div className="h-3 w-28 overflow-hidden rounded-full bg-white/10">
                         <div className="h-full w-3/4 rounded-full bg-gold" />

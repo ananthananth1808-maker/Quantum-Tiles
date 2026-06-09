@@ -1,17 +1,15 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from './components/ui/button';
 import { Card } from './components/ui/card';
-import { getCart, removeFromCart, updateCartQuantity } from './entities/cart/model/cartService';
+import { useCart } from './entities/cart/model/CartProvider';
+import { useNavigate } from 'react-router-dom';
 
 export default function CartPage() {
-  const [cartItems, setCartItems] = useState(() => getCart());
+  const { cartItems, updateQuantity: updateCartQuantity, removeItem: removeCartItem } = useCart();
   const [coupon, setCoupon] = useState('');
   const [discount, setDiscount] = useState(0);
-
-  useEffect(() => {
-    setCartItems(getCart());
-  }, []);
+  const navigate = useNavigate();
 
   const subtotal = useMemo(() => cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0), [cartItems]);
   const tax = useMemo(() => Math.round(subtotal * 0.08), [subtotal]);
@@ -19,13 +17,11 @@ export default function CartPage() {
   const total = subtotal + tax + delivery - discount;
 
   const updateQuantity = (id, amount) => {
-    const updatedItems = updateCartQuantity(id, amount);
-    setCartItems(updatedItems);
+    updateCartQuantity(id, amount);
   };
 
   const removeItem = (id) => {
-    const updatedItems = removeFromCart(id);
-    setCartItems(updatedItems);
+    removeCartItem(id);
   };
 
   const applyCoupon = () => {
@@ -47,18 +43,36 @@ export default function CartPage() {
       </header>
 
       <main className="mx-auto max-w-7xl px-6 py-10 md:px-8">
-        <div className="grid gap-8 xl:grid-cols-[1.4fr_0.9fr]">
-          <section className="space-y-6">
-            <Card className="space-y-6 p-6">
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-                <div>
-                  <p className="text-sm uppercase tracking-[0.32em] text-primary">Your Cart</p>
-                  <h2 className="mt-3 text-3xl font-semibold text-textPrimary">Review your selected tiles.</h2>
+        {cartItems.length === 0 ? (
+          <div className="flex items-center justify-center py-20">
+            <div className="space-y-6 text-center">
+              <div className="flex justify-center">
+                <div className="rounded-full bg-surface p-6 border border-border">
+                  <svg className="h-16 w-16 text-textSecondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                  </svg>
                 </div>
-                <p className="rounded-full bg-surface px-4 py-2 text-sm text-textSecondary border border-border">{cartItems.length} items</p>
               </div>
+              <div className="space-y-3">
+                <h2 className="text-2xl font-semibold text-textPrimary">Your cart is empty</h2>
+                <p className="text-textSecondary">Start adding beautiful tiles to your cart!</p>
+              </div>
+              <Button className="px-8 py-3 text-base font-semibold uppercase tracking-[0.18em]">Continue Shopping</Button>
+            </div>
+          </div>
+        ) : (
+          <div className="grid gap-8 xl:grid-cols-[1.4fr_0.9fr]">
+            <section className="space-y-6">
+              <Card className="space-y-6 p-6">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <p className="text-sm uppercase tracking-[0.32em] text-primary">Your Cart</p>
+                    <h2 className="mt-3 text-3xl font-semibold text-textPrimary">Review your selected tiles.</h2>
+                  </div>
+                  <p className="rounded-full bg-surface px-4 py-2 text-sm text-textSecondary border border-border">{cartItems.length} items</p>
+                </div>
 
-              <div className="space-y-4">
+                <div className="space-y-4">
                 {cartItems.map((item) => (
                   <motion.div
                     key={item.id}
@@ -162,12 +176,24 @@ export default function CartPage() {
               </div>
             </Card>
 
-            <Card className="space-y-4 bg-surface p-6">
-              <Button className="w-full px-6 py-4 text-base font-semibold uppercase tracking-[0.18em]">Proceed To Checkout</Button>
-              <Button variant="ghost" className="w-full px-6 py-4 text-base font-semibold uppercase tracking-[0.18em]">Continue Shopping</Button>
-            </Card>
-          </aside>
-        </div>
+              <Card className="space-y-4 bg-surface p-6">
+                <Button
+  className="w-full px-6 py-4 text-base font-semibold uppercase tracking-[0.18em]"
+  onClick={() => navigate('/checkout')}
+>
+  Proceed To Checkout
+</Button>
+                <Button variant="ghost" className="w-full px-6 py-4 text-base font-semibold uppercase tracking-[0.18em]">Continue Shopping</Button>
+              </Card><Button
+  variant="ghost"
+  className="w-full px-6 py-4 text-base font-semibold uppercase tracking-[0.18em]"
+  onClick={() => navigate('/products')}
+>
+  Continue Shopping
+</Button>
+            </aside>
+          </div>
+        )}
       </main>
     </div>
   );

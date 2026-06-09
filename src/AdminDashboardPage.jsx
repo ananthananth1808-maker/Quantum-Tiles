@@ -60,20 +60,20 @@ function ChartBar({ height, label }) {
       <div className="relative flex h-44 w-10 items-end rounded-3xl bg-blue-100">
         <div className="absolute inset-x-0 bottom-0 rounded-3xl bg-primary" style={{ height: `${height}%` }} />
       </div>
-      <span className="text-xs uppercase tracking-[0.28em] text-textSecondary">{label}</span>
+      <span className="text-xs uppercase tracking-[0.28em] text-black">{label}</span>
     </div>
   );
 }
 
 export default function AdminDashboardPage() {
   return (
-    <div className="min-h-screen bg-background text-textPrimary">
+    <div className="min-h-screen bg-background" style={{ color: '#000000' }}>
       <div className="mx-auto grid min-h-screen max-w-7xl grid-cols-1 gap-6 px-6 py-6 md:grid-cols-[280px_1fr] md:px-8">
         <aside className="space-y-8 rounded-[2rem] border border-border bg-surface p-6 shadow-card backdrop-blur-xl">
           <div className="space-y-3">
-            <p className="text-sm uppercase tracking-[0.35em] text-primary">Quantum Tiles</p>
-            <h1 className="text-3xl font-semibold text-textPrimary">Admin Dashboard</h1>
-            <p className="text-sm leading-6 text-textSecondary">Full SaaS control panel for your tile business.</p>
+            <p className="text-sm uppercase tracking-[0.35em] text-black">Quantum Tiles</p>
+            <h1 className="text-3xl font-semibold text-black">Admin Dashboard</h1>
+            <p className="text-sm leading-6 text-black">Full SaaS control panel for your tile business.</p>
           </div>
 
           <nav className="space-y-2">
@@ -81,17 +81,17 @@ export default function AdminDashboardPage() {
               <Link
                 key={item.label}
                 to={item.to}
-                className={`flex w-full items-center justify-between rounded-3xl px-5 py-4 text-left text-sm font-semibold transition ${index === 0 ? 'bg-blue-50 text-primary' : 'bg-surface text-textSecondary hover:bg-blue-50 hover:text-primary'}`}
+                className={`flex w-full items-center justify-between rounded-3xl px-5 py-4 text-left text-sm font-semibold transition ${index === 0 ? 'bg-blue-50 text-black' : 'bg-surface text-black hover:bg-blue-50 hover:text-black'}`}
               >
                 <span>{item.label}</span>
-                {item.label === 'Orders' && <span className="rounded-full bg-blue-100 px-2 py-1 text-xs text-primary">3</span>}
+                {item.label === 'Orders' && <span className="rounded-full bg-blue-100 px-2 py-1 text-xs text-black">3</span>}
               </Link>
             ))}
           </nav>
 
           <div className="rounded-[2rem] border border-border bg-blue-50 p-5">
-            <p className="text-sm uppercase tracking-[0.32em] text-primary">Need help?</p>
-            <p className="mt-3 text-sm text-textSecondary">Contact support for analytics setup or platform questions.</p>
+            <p className="text-sm uppercase tracking-[0.32em] text-black">Need help?</p>
+            <p className="mt-3 text-sm text-black">Contact support for analytics setup or platform questions.</p>
             <Button variant="ghost" className="mt-4 w-full px-4 py-3 text-sm uppercase tracking-[0.18em]">Support</Button>
           </div>
         </aside>
@@ -100,9 +100,9 @@ export default function AdminDashboardPage() {
           <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {stats.map((stat) => (
               <Card key={stat.label} className="rounded-[2rem] border border-border bg-white p-6 shadow-card backdrop-blur-xl">
-                <p className="text-sm uppercase tracking-[0.32em] text-primary">{stat.label}</p>
-                <p className="mt-4 text-3xl font-semibold text-textPrimary">{stat.value}</p>
-                <p className="mt-2 text-sm text-textSecondary">{stat.detail}</p>
+                <p className="text-sm uppercase tracking-[0.32em] text-black">{stat.label}</p>
+                <p className="mt-4 text-3xl font-semibold text-black">{stat.value}</p>
+                <p className="mt-2 text-sm text-black">{stat.detail}</p>
               </Card>
             ))}
           </section>
@@ -111,13 +111,13 @@ export default function AdminDashboardPage() {
             <Card className="rounded-[2rem] border border-border bg-white p-6 shadow-card backdrop-blur-xl">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <p className="text-sm uppercase tracking-[0.32em] text-primary">Revenue Analytics</p>
-                  <h2 className="mt-3 text-2xl font-semibold text-textPrimary">Monthly revenue growth</h2>
+                  <p className="text-sm uppercase tracking-[0.32em] text-black">Revenue Analytics</p>
+                  <h2 className="mt-3 text-2xl font-semibold text-black">Monthly revenue growth</h2>
                 </div>
                 <Button variant="ghost" className="text-sm uppercase tracking-[0.18em]">Export</Button>
               </div>
               <div className="mt-8 overflow-hidden rounded-[2rem] border border-border bg-surface p-6">
-                <div className="mb-6 flex items-center justify-between gap-4 text-textSecondary">
+                <div className="mb-6 flex items-center justify-between gap-4 text-black">
                   <span>Revenue</span>
                   <span>+18.2%</span>
                 </div>
@@ -127,7 +127,7 @@ export default function AdminDashboardPage() {
                       <div className="mx-auto h-44 w-9 rounded-3xl bg-blue-100">
                         <div className="mx-auto h-full w-full rounded-3xl bg-primary" style={{ height: `${item.value}%` }} />
                       </div>
-                      <span className="text-xs text-textSecondary">{item.month}</span>
+                      <span className="text-xs text-black">{item.month}</span>
                     </div>
                   ))}
                 </div>
@@ -136,12 +136,12 @@ export default function AdminDashboardPage() {
 
             <div className="grid gap-6">
               <Card className="rounded-[2rem] border border-border bg-white p-6 shadow-card backdrop-blur-xl">
-                <p className="text-sm uppercase tracking-[0.32em] text-primary">Sales Trends</p>
-                <h3 className="mt-3 text-2xl font-semibold text-textPrimary">Category performance</h3>
+                <p className="text-sm uppercase tracking-[0.32em] text-black">Sales Trends</p>
+                <h3 className="mt-3 text-2xl font-semibold text-black">Category performance</h3>
                 <div className="mt-8 space-y-4">
                   {salesTrends.map((item) => (
                     <div key={item.label} className="space-y-2">
-                      <div className="flex items-center justify-between text-sm text-textSecondary">
+                      <div className="flex items-center justify-between text-sm text-black">
                         <span>{item.label}</span>
                         <span>{item.value}%</span>
                       </div>
@@ -154,12 +154,12 @@ export default function AdminDashboardPage() {
               </Card>
 
               <Card className="rounded-[2rem] border border-border bg-white p-6 shadow-card backdrop-blur-xl">
-                <p className="text-sm uppercase tracking-[0.32em] text-primary">Inventory Status</p>
-                <h3 className="mt-3 text-2xl font-semibold text-textPrimary">Stock health overview</h3>
+                <p className="text-sm uppercase tracking-[0.32em] text-black">Inventory Status</p>
+                <h3 className="mt-3 text-2xl font-semibold text-black">Stock health overview</h3>
                 <div className="mt-8 space-y-4">
                   {inventoryStatus.map((item) => (
                     <div key={item.label} className="space-y-2">
-                      <div className="flex items-center justify-between text-sm text-textSecondary">
+                      <div className="flex items-center justify-between text-sm text-black">
                         <span>{item.label}</span>
                         <span>{item.value}%</span>
                       </div>
@@ -177,14 +177,14 @@ export default function AdminDashboardPage() {
             <Card className="rounded-[2rem] border border-border bg-white p-6 shadow-card backdrop-blur-xl">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                  <p className="text-sm uppercase tracking-[0.32em] text-primary">Recent Orders</p>
-                  <h3 className="mt-3 text-2xl font-semibold text-textPrimary">Latest order activity</h3>
+                  <p className="text-sm uppercase tracking-[0.32em] text-black">Recent Orders</p>
+                  <h3 className="mt-3 text-2xl font-semibold text-black">Latest order activity</h3>
                 </div>
                 <Button variant="ghost" className="text-sm uppercase tracking-[0.18em]">View All</Button>
               </div>
               <div className="mt-6 overflow-hidden rounded-[2rem] border border-border bg-surface">
-                <table className="min-w-full text-left text-sm text-textSecondary">
-                  <thead className="border-b border-border text-textPrimary bg-blue-50 font-semibold">
+                <table className="min-w-full text-left text-sm text-black">
+                  <thead className="border-b border-border text-black bg-blue-50 font-semibold">
                     <tr>
                       <th className="px-5 py-4">Order</th>
                       <th className="px-5 py-4">Customer</th>
@@ -196,11 +196,11 @@ export default function AdminDashboardPage() {
                   <tbody>
                     {recentOrders.map((order) => (
                       <tr key={order.id} className="border-b border-border last:border-none hover:bg-blue-50">
-                        <td className="px-5 py-4 font-semibold text-textPrimary">{order.id}</td>
+                        <td className="px-5 py-4 font-semibold text-black">{order.id}</td>
                         <td className="px-5 py-4">{order.customer}</td>
                         <td className="px-5 py-4">{order.date}</td>
                         <td className="px-5 py-4">{order.status}</td>
-                        <td className="px-5 py-4 text-right font-semibold text-textPrimary">{order.total}</td>
+                        <td className="px-5 py-4 text-right font-semibold text-black">{order.total}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -211,8 +211,8 @@ export default function AdminDashboardPage() {
             <Card className="rounded-[2rem] border border-border bg-white p-6 shadow-card backdrop-blur-xl">
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <p className="text-sm uppercase tracking-[0.32em] text-primary">Low Stock Products</p>
-                  <h3 className="mt-3 text-2xl font-semibold text-textPrimary">Reorder before sellout</h3>
+                  <p className="text-sm uppercase tracking-[0.32em] text-black">Low Stock Products</p>
+                  <h3 className="mt-3 text-2xl font-semibold text-black">Reorder before sellout</h3>
                 </div>
                 <Button variant="ghost" className="text-sm uppercase tracking-[0.18em]">Manage Stock</Button>
               </div>
@@ -221,12 +221,12 @@ export default function AdminDashboardPage() {
                   <div key={item.sku} className="rounded-[1.75rem] border border-border bg-surface p-4">
                     <div className="flex items-center justify-between gap-4">
                       <div>
-                        <p className="font-semibold text-textPrimary">{item.name}</p>
-                        <p className="text-sm text-textSecondary">SKU: {item.sku}</p>
+                        <p className="font-semibold text-black">{item.name}</p>
+                        <p className="text-sm text-black">SKU: {item.sku}</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-sm text-textSecondary">Stock: {item.stock}</p>
-                        <p className="text-sm text-textSecondary">Reorder: {item.reorder}</p>
+                        <p className="text-sm text-black">Stock: {item.stock}</p>
+                        <p className="text-sm text-black">Reorder: {item.reorder}</p>
                       </div>
                     </div>
                   </div>

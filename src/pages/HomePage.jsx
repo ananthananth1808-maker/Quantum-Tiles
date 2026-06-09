@@ -18,7 +18,7 @@ export default function HomePage() {
         animate="visible"
         variants={staggerContainer}
       >
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center ">
           {/* Left Content */}
           <div>
             {/* Tag */}
