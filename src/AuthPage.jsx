@@ -100,21 +100,21 @@ export default function AuthPage({ initialTab = 'login' }) {
   };
 
   return (
-    <div className="min-h-screen bg-background text-textPrimary">
+    <div className="min-h-screen bg-background text-black">
       <div className="mx-auto flex min-h-screen max-w-7xl flex-col md:flex-row">
         <motion.section
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative flex-1 bg-[linear-gradient(180deg,rgba(15,23,42,0.96),rgba(15,23,42,0.78))] bg-cover bg-center px-6 py-12 text-white md:px-12 lg:px-16"
+          className="relative flex-1 bg-[linear-gradient(180deg,rgba(15,23,42,0.96),rgba(15,23,42,0.78))] bg-cover bg-center px-6 py-12 text-black md:px-12 lg:px-16"
           style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80)' }}
         >
           <div className="absolute inset-0 bg-black/5" />
           <div className="relative z-10 flex h-full flex-col justify-between gap-10">
             <div className="max-w-xl">
-              <p className="text-sm uppercase tracking-[0.35em] text-primary">Quantum Tiles</p>
-              <h1 className="mt-6 text-4xl font-semibold tracking-tight text-white sm:text-5xl">Transform Your Space with Premium Tiles</h1>
-              <p className="mt-6 text-base leading-7 text-textSecondary sm:text-lg">
+              <p className="text-sm uppercase tracking-[0.35em] text-black">Quantum Tiles</p>
+              <h1 className="mt-6 text-4xl font-semibold tracking-tight text-black sm:text-5xl">Transform Your Space with Premium Tiles</h1>
+              <p className="mt-6 text-base leading-7 text-orange sm:text-lg">
                 Explore luxury tile collections, AI-powered room visualization, and seamless online tile shopping.
               </p>
             </div>
@@ -122,7 +122,7 @@ export default function AuthPage({ initialTab = 'login' }) {
             <div className="grid gap-4 sm:grid-cols-2">
               {features.map((feature) => (
                 <div key={feature} className="rounded-[2rem] border border-border bg-surface p-5 backdrop-blur-xl">
-                  <p className="text-sm font-semibold text-white">✓ {feature}</p>
+                  <p className="text-sm font-semibold text-black">✓ {feature}</p>
                 </div>
               ))}
             </div>
@@ -136,14 +136,14 @@ export default function AuthPage({ initialTab = 'login' }) {
           className="flex-1 px-6 py-12 md:px-10 lg:px-14"
         >
           <div className="mx-auto max-w-2xl">
-            <Card className="rounded-[2rem] border border-white/10 bg-white shadow-glow text-navy px-6 py-8 md:px-8 md:py-10">
+            <Card className="rounded-[2rem] border border-white/10 bg-white shadow-glow text-black px-6 py-8 md:px-8 md:py-10">
               <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
                 {['login', 'register'].map((tab) => (
                   <button
                     key={tab}
                     type="button"
                     onClick={() => setActiveTab(tab)}
-                    className={`rounded-full px-6 py-3 text-sm font-semibold transition ${activeTab === tab ? 'bg-primary text-white shadow-md' : 'bg-surface text-textSecondary border border-border hover:bg-blue-50'}`}
+                    className={`rounded-full px-6 py-3 text-sm font-semibold transition ${activeTab === tab ? 'bg-primary text-black shadow-md' : 'bg-surface text-black border border-border hover:bg-blue-50'}`}
                   >
                     {tab === 'login' ? 'Login' : 'Register'}
                   </button>
@@ -154,37 +154,37 @@ export default function AuthPage({ initialTab = 'login' }) {
                 {activeTab === 'login' ? (
                   <form onSubmit={handleSubmit(handleLogin)} className="space-y-5">
                     <div className="space-y-4">
-                      <label className="block text-sm font-medium text-white/90">Email</label>
+                      <label className="block text-sm font-medium text-black">Email</label>
                       <input
                         type="email"
                         placeholder="you@quantumtiles.com"
-                        className="w-full rounded-3xl border border-border bg-surface px-4 py-3 text-textPrimary outline-none transition focus:border-primary focus:ring-2 focus:ring-blue-100"
+                        className="w-full rounded-3xl border border-border bg-surface px-4 py-3 text-black outline-none transition focus:border-primary focus:ring-2 focus:ring-blue-100"
                         {...register('email', { required: 'Email is required' })}
                       />
                       {errors.email && <p className="text-xs text-rose-300">{errors.email.message}</p>}
                     </div>
 
                     <div className="space-y-4">
-                      <label className="block text-sm font-medium text-textSecondary">Password</label>
+                      <label className="block text-sm font-medium text-black">Password</label>
                       <div className="relative">
                         <input
                           type={showPassword ? 'text' : 'password'}
                           placeholder="Enter your password"
-                          className="w-full rounded-3xl border border-border bg-surface px-4 py-3 pr-28 text-textPrimary outline-none transition focus:border-primary focus:ring-2 focus:ring-blue-100"
+                          className="w-full rounded-3xl border border-border bg-surface px-4 py-3 pr-28 text-black outline-none transition focus:border-primary focus:ring-2 focus:ring-blue-100"
                           {...register('password', { required: 'Password is required' })}
                         />
                         <button
                           type="button"
                           onClick={() => setShowPassword((value) => !value)}
-                          className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 px-3 py-2 text-xs text-white/80 transition hover:bg-white/20"
+                          className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 px-3 py-2 text-xs text-black transition hover:bg-white/20"
                         >
                           {showPassword ? 'Hide' : 'Show'}
                         </button>
                       </div>
-                      {errors.password && <p className="text-xs text-rose-300">{errors.password.message}</p>}
+                      {errors.password && <p className="text-xs text-black">{errors.password.message}</p>}
                     </div>
 
-                    <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-textSecondary">
+                    <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-black">
                       <label className="inline-flex items-center gap-2">
                         <input type="checkbox" className="h-4 w-4 rounded border-border bg-surface accent-primary" />
                         Remember Me
@@ -198,7 +198,7 @@ export default function AuthPage({ initialTab = 'login' }) {
                       <Button type="submit" className="w-full px-5 py-3 text-base font-semibold uppercase tracking-[0.18em]">
                         {loading ? 'Signing in...' : 'Login'}
                       </Button>
-                      <Button type="button" variant="ghost" className="w-full px-5 py-3 text-base font-semibold uppercase tracking-[0.18em] text-white/90" onClick={handleGoogleLogin}>
+                      <Button type="button" variant="ghost" className="w-full px-5 py-3 text-base font-semibold uppercase tracking-[0.18em] text-black" onClick={handleGoogleLogin}>
                         {loading ? 'Please wait...' : 'Continue with Google'}
                       </Button>
                     </div>
@@ -206,58 +206,58 @@ export default function AuthPage({ initialTab = 'login' }) {
                 ) : (
                   <form onSubmit={handleSubmit(handleRegister)} className="space-y-5">
                     <div className="grid gap-4 sm:grid-cols-2">
-                      <label className="space-y-2 text-sm text-white/80">
+                      <label className="space-y-2 text-sm text-black">
                         <span>Full Name</span>
                         <input
                           type="text"
                           placeholder="John Doe"
-                          className="w-full rounded-3xl border border-white/10 bg-navy/80 px-4 py-3 text-white outline-none transition focus:border-gold"
+                          className="w-full rounded-3xl border border-black bg-navy/80 px-4 py-3 text-black outline-none transition focus:border-gold"
                           {...register('name', { required: 'Full name is required' })}
                         />
-                        {errors.name && <p className="text-xs text-rose-300">{errors.name.message}</p>}
+                        {errors.name && <p className="text-xs text-black">{errors.name.message}</p>}
                       </label>
-                      <label className="space-y-2 text-sm text-white/80">
+                      <label className="space-y-2 text-sm text-black">
                         <span>Phone Number</span>
                         <input
                           type="tel"
                           placeholder="(123) 456-7890"
-                          className="w-full rounded-3xl border border-white/10 bg-navy/80 px-4 py-3 text-white outline-none transition focus:border-gold"
+                          className="w-full rounded-3xl border border-black bg-navy/80 px-4 py-3 text-black outline-none transition focus:border-gold"
                           {...register('phone', { required: 'Phone number is required' })}
                         />
-                        {errors.phone && <p className="text-xs text-rose-300">{errors.phone.message}</p>}
+                        {errors.phone && <p className="text-xs text-black">{errors.phone.message}</p>}
                       </label>
                     </div>
 
                     <div className="space-y-4">
-                      <label className="block text-sm font-medium text-white/90">Email</label>
+                      <label className="block text-sm font-medium text-black">Email</label>
                       <input
                         type="email"
                         placeholder="you@quantumtiles.com"
-                        className="w-full rounded-3xl border border-white/10 bg-navy/80 px-4 py-3 text-white outline-none transition focus:border-gold"
+                        className="w-full rounded-3xl border border-black bg-navy/80 px-4 py-3 text-black outline-none transition focus:border-gold"
                         {...register('email', {
                           required: 'Email is required',
                           pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Enter a valid email' },
                         })}
                       />
-                      {errors.email && <p className="text-xs text-rose-300">{errors.email.message}</p>}
+                      {errors.email && <p className="text-xs text-black">{errors.email.message}</p>}
                     </div>
 
                     <div className="grid gap-4 sm:grid-cols-2">
-                      <label className="space-y-2 text-sm text-white/80">
+                      <label className="space-y-2 text-sm text-black">
                         <span>Password</span>
                         <input
                           type={showPassword ? 'text' : 'password'}
                           placeholder="Create a password"
-                          className="w-full rounded-3xl border border-white/10 bg-navy/80 px-4 py-3 text-white outline-none transition focus:border-gold"
+                          className="w-full rounded-3xl border border-black bg-navy/80 px-4 py-3 text-black outline-none transition focus:border-gold"
                           {...register('password', { required: 'Password is required', minLength: { value: 6, message: 'Minimum 6 characters' } })}
                         />
                       </label>
-                      <label className="space-y-2 text-sm text-white/80">
+                      <label className="space-y-2 text-sm text-black">
                         <span>Confirm Password</span>
                         <input
                           type={showPassword ? 'text' : 'password'}
                           placeholder="Confirm your password"
-                          className="w-full rounded-3xl border border-white/10 bg-navy/80 px-4 py-3 text-white outline-none transition focus:border-gold"
+                          className="w-full rounded-3xl border border-black bg-navy/80 px-4 py-3 text-black outline-none transition focus:border-gold"
                           {...register('confirmPassword', {
                             required: 'Please confirm your password',
                             validate: (value) => value === password || 'Passwords do not match',
@@ -265,10 +265,10 @@ export default function AuthPage({ initialTab = 'login' }) {
                         />
                       </label>
                     </div>
-                    {errors.password?.message && <p className="text-xs text-rose-300">{errors.password.message}</p>}
-                    {errors.confirmPassword?.message && <p className="text-xs text-rose-300">{errors.confirmPassword.message}</p>}
+                    {errors.password?.message && <p className="text-xs text-black">{errors.password.message}</p>}
+                    {errors.confirmPassword?.message && <p className="text-xs text-black">{errors.confirmPassword.message}</p>}
 
-                    <div className="space-y-4 text-sm text-white/80">
+                    <div className="space-y-4 text-sm text-black">
                       <p className="font-medium uppercase tracking-[0.32em] text-primary">Select role</p>
                       <div className="flex flex-wrap gap-3">
                         {roles.map((role) => (
@@ -290,7 +290,7 @@ export default function AuthPage({ initialTab = 'login' }) {
                       <Button type="submit" className="w-full px-5 py-3 text-base font-semibold uppercase tracking-[0.18em]">
                         {loading ? 'Creating account...' : 'Create Account'}
                       </Button>
-                      <Button type="button" variant="ghost" className="w-full px-5 py-3 text-base font-semibold uppercase tracking-[0.18em] text-white/90" onClick={handleGoogleLogin}>
+                      <Button type="button" variant="ghost" className="w-full px-5 py-3 text-base font-semibold uppercase tracking-[0.18em] text-black" onClick={handleGoogleLogin}>
                         {loading ? 'Please wait...' : 'Continue with Google'}
                       </Button>
                     </div>
