@@ -132,7 +132,7 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-textPrimary">
+    <div className="min-h-screen bg-background text-textPrimary bg-gradient-to-br from-slate-950 via-blue-950 to-black">
       <header className="sticky top-0 z-40 border-b border-border bg-white backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-8">
           <div>
@@ -153,30 +153,30 @@ export default function CheckoutPage() {
           className="rounded-[2.5rem] border border-border bg-white/5 p-6 md:p-8 shadow-card"
         >
           {/* Progress Steps */}
-          <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="mb-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between text-white">
             <div>
               <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Secure Checkout</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-black">
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white">
                 Complete your order
               </h2>
             </div>
-            <div className="hidden gap-2 rounded-full bg-white/5 px-4 py-3 text-sm border border-white/10 sm:flex">
+            <div className="hidden gap-2 rounded-full bg-white/5 px-4 py-3 text-sm border border-white/10 sm:flex text-white">
               {steps.map((step, index) => (
-                <div key={step} className="flex items-center gap-2">
+                <div key={step} className="flex items-center gap-2 border-white">
                   <span
-                    className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-semibold transition ${
+                    className={`flex h-8 w-8 items-center justify-center rounded-full border-white text-sm font-semibold transition ${
                       index === activeStep
-                        ? 'border-2 border-gold bg-gold/20 text-black'
+                        ? 'border-2 border-white text-white'
                         : index < activeStep
-                        ? 'border-2 border-emerald-500 bg-emerald-500/20 text-black'
-                        : 'border-2 border-white/20 text-black/50'
+                        ? 'border-2 border-white text-white'
+                        : 'border-2 border-white text-white/50'
                     }`}
                   >
                     {index < activeStep ? '✓' : index + 1}
                   </span>
                   <span
                     className={`hidden sm:inline text-sm font-medium transition ${
-                      index <= activeStep ? 'text-black' : 'text-black'
+                      index <= activeStep ? 'text-white' : 'text-white'
                     }`}
                   >
                     {step}
@@ -189,10 +189,10 @@ export default function CheckoutPage() {
           <div className="grid gap-8 xl:grid-cols-[1.6fr_0.9fr]">
             <section className="space-y-8">
               {/* Shipping Address Section */}
-              <Card className="space-y-6 p-8">
+              <Card className="space-y-6 p-8 bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-white/10  ">
                 <div>
-                  <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Delivery Address</p>
-                  <h3 className="mt-3 text-2xl font-semibold tracking-tight text-black">
+                  <p className="text-sm uppercase tracking-[0.32em] text-white">Delivery Address</p>
+                  <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white">
                     Enter your shipping details
                   </h3>
                 </div>
@@ -200,7 +200,7 @@ export default function CheckoutPage() {
                 {/* Name Fields */}
                 <div className="grid gap-4 sm:grid-cols-2">
                   <label className="space-y-2">
-                    <span className="text-sm font-medium text-black">
+                    <span className="text-sm font-medium text-white">
                       First Name <span className="text-red-400">*</span>
                     </span>
                     <input
@@ -209,7 +209,7 @@ export default function CheckoutPage() {
                       value={shipping.firstName}
                       onChange={handleInputChange}
                       placeholder="Enter first name"
-                      className={`w-full rounded-2xl border-2 bg-white/5 px-4 py-3 text-black placeholder:text-black/40 transition focus:outline-none ${
+                      className={`w-full rounded-2xl border-2 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 transition focus:outline-none ${
                         formErrors.firstName
                           ? 'border-red-500/50 focus:border-red-400'
                           : 'border-white/10 focus:border-gold'
@@ -220,7 +220,7 @@ export default function CheckoutPage() {
                     )}
                   </label>
                   <label className="space-y-2">
-                    <span className="text-sm font-medium text-black">
+                    <span className="text-sm font-medium text-white">
                       Last Name <span className="text-red-400">*</span>
                     </span>
                     <input
@@ -229,7 +229,7 @@ export default function CheckoutPage() {
                       value={shipping.lastName}
                       onChange={handleInputChange}
                       placeholder="Enter last name"
-                      className="w-full rounded-2xl border-2 border-white/10 bg-white/5 px-4 py-3 text-black placeholder:text-black/40 transition focus:border-gold focus:outline-none"
+                      className="w-full rounded-2xl border-2 border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 transition focus:border-gold focus:outline-none"
                     />
                   </label>
                 </div>
@@ -237,7 +237,7 @@ export default function CheckoutPage() {
                 {/* Email and Phone */}
                 <div className="grid gap-4 sm:grid-cols-2">
                   <label className="space-y-2">
-                    <span className="text-sm font-medium text-black">
+                    <span className="text-sm font-medium text-white">
                       Email <span className="text-red-400">*</span>
                     </span>
                     <input
@@ -246,7 +246,7 @@ export default function CheckoutPage() {
                       value={shipping.email}
                       onChange={handleInputChange}
                       placeholder="your.email@example.com"
-                      className={`w-full rounded-2xl border-2 bg-white/5 px-4 py-3 text-black placeholder:text-black/40 transition focus:outline-none ${
+                      className={`w-full rounded-2xl border-2 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 transition focus:outline-none ${
                         formErrors.email
                           ? 'border-red-500/50 focus:border-red-400'
                           : 'border-white/10 focus:border-gold'
@@ -257,7 +257,7 @@ export default function CheckoutPage() {
                     )}
                   </label>
                   <label className="space-y-2">
-                    <span className="text-sm font-medium text-black">
+                    <span className="text-sm font-medium text-white">
                       Phone <span className="text-red-400">*</span>
                     </span>
                     <input
@@ -266,7 +266,7 @@ export default function CheckoutPage() {
                       value={shipping.phone}
                       onChange={handleInputChange}
                       placeholder="10-digit mobile number"
-                      className={`w-full rounded-2xl border-2 bg-white/5 px-4 py-3 text-black placeholder:text-black/40 transition focus:outline-none ${
+                      className={`w-full rounded-2xl border-2 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 transition focus:outline-none ${
                         formErrors.phone
                           ? 'border-red-500/50 focus:border-red-400'
                           : 'border-white/10 focus:border-gold'
@@ -281,7 +281,7 @@ export default function CheckoutPage() {
                 {/* Address Lines */}
                 <div className="space-y-4">
                   <label className="space-y-2">
-                    <span className="text-sm font-medium text-black">
+                    <span className="text-sm font-medium text-white">
                       Address Line 1 <span className="text-red-400">*</span>
                     </span>
                     <input
@@ -290,7 +290,7 @@ export default function CheckoutPage() {
                       value={shipping.addressLine1}
                       onChange={handleInputChange}
                       placeholder="House no., building name, street"
-                      className={`w-full rounded-2xl border-2 bg-white/5 px-4 py-3 text-black placeholder:text-black/40 transition focus:outline-none ${
+                      className={`w-full rounded-2xl border-2 bg-white/5 px-4 py-3 text-white placeholder:text-white/40 transition focus:outline-none ${
                         formErrors.addressLine1
                           ? 'border-red-500/50 focus:border-red-400'
                           : 'border-white/10 focus:border-gold'
@@ -301,14 +301,14 @@ export default function CheckoutPage() {
                     )}
                   </label>
                   <label className="space-y-2">
-                    <span className="text-sm font-medium text-black/80">Address Line 2</span>
+                    <span className="text-sm font-medium text-white">Address Line 2</span>
                     <input
                       type="text"
                       name="addressLine2"
                       value={shipping.addressLine2}
                       onChange={handleInputChange}
                       placeholder="Apt, unit, suite, etc. (optional)"
-                      className="w-full rounded-2xl border-2 border-white/10 bg-white/5 px-4 py-3 text-black placeholder:text-black/40 transition focus:border-gold focus:outline-none"
+                      className="w-full rounded-2xl border-2 border-white/10 bg-white/5 px-4 py-3 text-white placeholder:text-white transition focus:border-gold focus:outline-none"
                     />
                   </label>
                 </div>
@@ -316,7 +316,7 @@ export default function CheckoutPage() {
                 {/* City, State, Pincode */}
                 <div className="grid gap-4 sm:grid-cols-3">
                   <label className="space-y-2">
-                    <span className="text-sm font-medium text-black">
+                    <span className="text-sm font-medium text-white">
                       City <span className="text-red-400">*</span>
                     </span>
                     <input
@@ -325,7 +325,7 @@ export default function CheckoutPage() {
                       value={shipping.city}
                       onChange={handleInputChange}
                       placeholder="City name"
-                      className={`w-full rounded-2xl border-2 bg-white/5 px-4 py-3 text-black placeholder:text-black/40 transition focus:outline-none ${
+                      className={`w-full rounded-2xl border-2 bg-white/5 px-4 py-3 text-white placeholder:text-white transition focus:outline-none ${
                         formErrors.city
                           ? 'border-red-500/50 focus:border-red-400'
                           : 'border-white/10 focus:border-gold'
@@ -336,7 +336,7 @@ export default function CheckoutPage() {
                     )}
                   </label>
                   <label className="space-y-2">
-                    <span className="text-sm font-medium text-black">
+                    <span className="text-sm font-medium text-white">
                       State <span className="text-red-400">*</span>
                     </span>
                     <input
@@ -345,7 +345,7 @@ export default function CheckoutPage() {
                       value={shipping.state}
                       onChange={handleInputChange}
                       placeholder="State name"
-                      className={`w-full rounded-2xl border-2 bg-white/5 px-4 py-3 text-black placeholder:text-black/40 transition focus:outline-none ${
+                      className={`w-full rounded-2xl border-2 bg-white/5 px-4 py-3 text-white placeholder:text-white transition focus:outline-none ${
                         formErrors.state
                           ? 'border-red-500/50 focus:border-red-400'
                           : 'border-white/10 focus:border-gold'
@@ -356,8 +356,8 @@ export default function CheckoutPage() {
                     )}
                   </label>
                   <label className="space-y-2">
-                    <span className="text-sm font-medium text-black">
-                      Pincode <span className="text-red-400">*</span>
+                    <span className="text-sm font-medium text-white">
+                      Pincode <span className="text-white">*</span>
                     </span>
                     <input
                       type="text"
@@ -365,7 +365,7 @@ export default function CheckoutPage() {
                       value={shipping.pincode}
                       onChange={handleInputChange}
                       placeholder="6-digit pincode"
-                      className={`w-full rounded-2xl border-2 bg-white/5 px-4 py-3 text-black placeholder:text-black/40 transition focus:outline-none ${
+                      className={`w-full rounded-2xl border-2 bg-white/5 px-4 py-3 text-white placeholder:text-white transition focus:outline-none ${
                         formErrors.pincode
                           ? 'border-red-500/50 focus:border-red-400'
                           : 'border-white/10 focus:border-gold'
@@ -379,10 +379,10 @@ export default function CheckoutPage() {
               </Card>
 
               {/* Payment Methods Section */}
-              <Card className="space-y-6 p-8">
+              <Card className="space-y-6 p-8 bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-white/10">
                 <div>
-                  <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Payment Method</p>
-                  <h3 className="mt-3 text-2xl font-semibold tracking-tight text-black">
+                  <p className="text-sm uppercase tracking-[0.32em] text-white">Payment Method</p>
+                  <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white">
                     Choose your payment option
                   </h3>
                 </div>
@@ -430,15 +430,15 @@ export default function CheckoutPage() {
   )}
 </div>
                       </div>
-                      <p className="mt-4 text-sm font-semibold text-black">{method.name}</p>
-                      <p className="mt-1 text-xs text-black/60">{method.description}</p>
+                      <p className="mt-4 text-sm font-semibold text-white">{method.name}</p>
+                      <p className="mt-1 text-xs text-white/60">{method.description}</p>
                     </motion.button>
                   ))}
                 </div>
 
                 {/* Payment Info Message */}
                 <div className="rounded-2xl bg-gold/10 border border-gold/20 p-4">
-                  <p className="text-sm text-gold/80">
+                  <p className="text-sm text-white">
                     💡 Your payment information is encrypted and secure. We never store your card details.
                   </p>
                 </div>
@@ -447,10 +447,10 @@ export default function CheckoutPage() {
 
             {/* Order Summary Sidebar */}
             <aside className="space-y-6">
-              <Card className="space-y-6 p-8 sticky top-24">
+              <Card className="space-y-6 p-8 sticky top-24 bg-gradient-to-br from-slate-900/80 to-slate-800/80 border border-white/10">
                 <div>
-                  <p className="text-sm uppercase tracking-[0.32em] text-gold/90">Order Summary</p>
-                  <h3 className="mt-3 text-2xl font-semibold tracking-tight text-black">
+                  <p className="text-sm uppercase tracking-[0.32em] text-white">Order Summary</p>
+                  <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white">
                     Your items
                   </h3>
                 </div>
@@ -460,10 +460,10 @@ export default function CheckoutPage() {
                   {orderItems.map((item, index) => (
                     <div key={index} className="flex items-center justify-between gap-4">
                       <div className="flex-1">
-                        <p className="text-sm font-medium text-black">{item.name}</p>
-                        <p className="text-xs text-black/60">Qty: {item.qty}</p>
+                        <p className="text-sm font-medium text-white">{item.name}</p>
+                        <p className="text-xs text-white">Qty: {item.qty}</p>
                       </div>
-                      <span className="text-sm font-semibold text-gold">
+                      <span className="text-sm font-semibold text-white">
                         ₹{(item.price * item.qty).toLocaleString('en-IN')}
                       </span>
                     </div>
@@ -471,22 +471,22 @@ export default function CheckoutPage() {
                 </div>
 
                 {/* Price Breakdown */}
-                <div className="space-y-3 border-t border-white/10 pt-5 text-sm">
+                <div className="space-y-3 border-t border-white pt-5 text-sm">
                   <div className="flex items-center justify-between gap-4">
-                    <span className="text-white/70">Subtotal</span>
-                    <span className="font-medium text-black">
+                    <span className="text-white">Subtotal</span>
+                    <span className="font-medium text-white">
                       ₹{subtotal.toLocaleString('en-IN')}
                     </span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
-                    <span className="text-black/70">Tax (18%)</span>
-                    <span className="font-medium text-black">
+                    <span className="text-white">Tax (18%)</span>
+                    <span className="font-medium text-white">
                       ₹{tax.toLocaleString('en-IN')}
                     </span>
                   </div>
                   <div className="flex items-center justify-between gap-4">
-                    <span className="text-black/70">Delivery Charge</span>
-                    <span className="font-medium text-black">
+                    <span className="text-white">Delivery Charge</span>
+                    <span className="font-medium text-white">
                       ₹{delivery.toLocaleString('en-IN')}
                     </span>
                   </div>
@@ -495,8 +495,8 @@ export default function CheckoutPage() {
                 {/* Total */}
                 <div className="border-t border-white/10 pt-5">
                   <div className="flex items-center justify-between gap-4">
-                    <span className="text-base font-semibold text-black">Total</span>
-                    <span className="text-2xl font-bold text-gold">
+                    <span className="text-base font-semibold text-white">Total</span>
+                    <span className="text-2xl font-bold text-white">
                       ₹{total.toLocaleString('en-IN')}
                     </span>
                   </div>
@@ -509,17 +509,17 @@ export default function CheckoutPage() {
                   onClick={(e) => isAddressComplete && handlePlaceOrder(e)}
                   disabled={!isAddressComplete}
                   type="button"
-                  className={`w-full py-4 px-6 rounded-2xl font-semibold text-base uppercase tracking-[0.18em] transition-all ${
+                  className={`w-full py-4 px-6 rounded-2xl border-white font-semibold text-base uppercase tracking-[0.18em] while-hover transition-all ${
                     isAddressComplete
-                      ? 'bg-gold text-navy hover:bg-gold/90 active:bg-gold/80 shadow-lg shadow-gold/20 cursor-pointer'
-                      : 'bg-white/10 text-black/50 cursor-not-allowed opacity-60'
+                      ? 'bg-gold text-white hover:bg-green active:bg-gold/80 shadow-lg shadow-gold/20 cursor-pointer'
+                      : 'bg-white/10 text-white cursor-not-allowed opacity-60'
                   }`}
                 >
                   {isAddressComplete ? 'Place Order' : 'Complete Address'}
                 </motion.button>
 
                 {/* Security Badge */}
-                <div className="flex items-center justify-center gap-2 text-xs text-black/60">
+                <div className="flex items-center justify-center gap-2 text-xs text-white">
                   <span>🔒</span>
                   <span>100% Secure Checkout</span>
                 </div>

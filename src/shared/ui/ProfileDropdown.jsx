@@ -8,7 +8,6 @@ import { BarChart3, Database, FileText, Heart, LayoutDashboard, Layers, ListChec
 const customerItems = [
   { label: 'My Profile', icon: User, to: AppRoutes.CUSTOMER_DASHBOARD },
   { label: 'My Orders', icon: ListChecks, to: AppRoutes.CUSTOMER_ORDERS },
-  { label: 'Wishlist', icon: Heart, to: AppRoutes.WISHLIST },
   { label: 'Saved Designs', icon: Sparkles, to: AppRoutes.DESIGN_EXPLORER },
   { label: 'Settings', icon: Settings, to: AppRoutes.SETTINGS },
 ];

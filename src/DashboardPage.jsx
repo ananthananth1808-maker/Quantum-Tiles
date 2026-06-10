@@ -4,13 +4,6 @@ import { Button } from './components/ui/button';
 import { Card } from './components/ui/card';
 import { AppRoutes } from './shared/routes';
 
-const navItems = [
-  { label: 'Dashboard', to: AppRoutes.CUSTOMER_DASHBOARD, badge: null },
-  { label: 'Orders', to: AppRoutes.CUSTOMER_ORDERS, badge: 3 },
-  { label: 'Wishlist', to: AppRoutes.WISHLIST, badge: 12 },
-  { label: 'Saved Designs', to: AppRoutes.DESIGN_EXPLORER, badge: null },
-  { label: 'Profile', to: AppRoutes.HOME, badge: null },
-];
 
 const stats = [
   { label: 'Total Orders', value: 28, icon: '🛒' },
@@ -41,6 +34,7 @@ const recentOrders = [
     amount: '$95.00',
   },
 ];
+
 
 const orderStatus = [
   { label: 'Processing', count: 3, width: '30%' },
@@ -75,77 +69,24 @@ const itemVariants = {
 
 export default function DashboardPage() {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-black text-white w-full">
+    <div className="relative z-50-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-black text-white w-full grid-cols-2 ">
 
       {/* Background Glow */}
-      <div className="absolute left-10 top-20 h-72 w-72 rounded-full bg-blue-500/20 blur-[120px]" />
-      <div className="absolute right-10 bottom-20 h-72 w-72 rounded-full bg-purple-500/20 blur-[120px]" />
-      <div className="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-[150px]" />
+      <div className="absolute right-10 bottom-20 h-72 w-72 rounded-full bg-purple-500/20 blur-[120px] grid-cols-2" />
+      <div className="absolute left-1/2  h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-[150px]" />
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 mx-auto grid min-h-screen max-w-7xl grid-cols-1 gap-6 px-6 py-8 md:grid-cols-[280px_1fr]"
+        className="relative z-10 mx-auto  min-h-screen w-full grid-cols-2 gap-6 px-6 py-8 md:grid-cols-[280px_1fr]"
+      
       >
         {/* Sidebar */}
-        <motion.aside
-          variants={itemVariants}
-          className="space-y-6 rounded-[2rem] border border-white/20 bg-white/10 p-6 backdrop-blur-xl shadow-2xl"
-        >
-          <div>
-            <p className="text-xs uppercase tracking-[0.4em] text-cyan-300">
-              Quantum Tiles
-            </p>
+       
 
-            <h2 className="mt-4 text-3xl font-bold">
-              Customer Dashboard
-            </h2>
-
-            <p className="mt-3 text-sm text-gray-300">
-              Overview of your orders, wishlist and saved designs.
-            </p>
-          </div>
-
-          <nav className="space-y-3">
-            {navItems.map((item) => (
-              <motion.div
-                key={item.label}
-                whileHover={{
-                  scale: 1.03,
-                  x: 5,
-                }}
-              >
-                <Link
-                  to={item.to}
-                  className="flex items-center justify-between rounded-2xl bg-white/10 px-5 py-4 text-sm font-semibold transition-all duration-300 hover:bg-blue-500/30"
-                >
-                  <span>{item.label}</span>
-
-                  {item.badge && (
-                    <span className="rounded-full bg-cyan-500 px-2 py-1 text-xs font-bold">
-                      {item.badge}
-                    </span>
-                  )}
-                </Link>
-              </motion.div>
-            ))}
-          </nav>
-
-          <div className="rounded-[2rem] border border-white/20 bg-white/10 p-5 backdrop-blur-xl">
-            <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">
-              Download Invoice
-            </p>
-
-            <p className="mt-3 text-sm text-gray-300">
-              Access latest invoices or complete purchase history.
-            </p>
-
-            <Button className="mt-5 w-full transition-all duration-300 hover:scale-105">
-              Download
-            </Button>
-          </div>
-        </motion.aside>
+         
+        
 
         {/* Main Content */}
         <main className="space-y-6">
@@ -160,26 +101,45 @@ export default function DashboardPage() {
                   scale: 1.03,
                 }}
               >
-                <Card className="rounded-[2rem] border border-white/20 bg-white/10 p-6 backdrop-blur-xl shadow-2xl">
-                  <div className="flex items-center justify-between">
-                    <div className="rounded-3xl bg-white/10 p-4 text-3xl">
-                      {stat.icon}
-                    </div>
+               <Card className="rounded-[2rem] border border-white/20 bg-white/10 p-6 backdrop-blur-xl shadow-2xl">
+  <div className="flex flex-col items-center text-center gap-4">
+    
+    <div className="rounded-3xl bg-white/10 p-4 text-3xl">
+      {stat.icon}
+    </div>
 
-                    <div className="text-right">
-                      <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">
-                        {stat.label}
-                      </p>
+    <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">
+      {stat.label}
+    </p>
 
-                      <h3 className="mt-3 text-4xl font-bold">
-                        {stat.value}
-                      </h3>
-                    </div>
-                  </div>
-                </Card>
+    <h3 className="text-4xl font-bold">
+      {stat.value}
+    </h3>
+
+  </div>
+</Card>
+
               </motion.div>
             ))}
+            
+            
+            
           </section>
+          <div className="rounded-[2rem] border border-white/20 bg-white/10 p-5 backdrop-blur-xl mt-0">
+            <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">
+              Download Invoice
+            </p>
+
+            <p className="mt-3 text-sm text-gray-300">
+              Access latest invoices or complete purchase history.
+            </p>
+
+            <Button className="mt-5 w-full transition-all duration-300 hover:scale-105">
+              Download
+            </Button>
+          </div>
+          
+          
 
           {/* Orders + Status */}
           <section className="grid gap-6 xl:grid-cols-[1.3fr_0.9fr]">
@@ -253,7 +213,9 @@ export default function DashboardPage() {
                   </table>
                 </div>
               </Card>
+              
             </motion.div>
+            
 
             {/* Order Status */}
             <motion.div variants={itemVariants}>
@@ -316,10 +278,13 @@ export default function DashboardPage() {
                 </div>
               </Card>
             </motion.div>
+            
 
           </section>
+           
         </main>
       </motion.div>
+      
     </div>
   );
 }

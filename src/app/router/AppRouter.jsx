@@ -7,6 +7,8 @@ import { AdminRoute } from './AdminRoute';
 import { CustomerRoute } from './CustomerRoute';
 import Loader from '../../shared/ui/Loader';
 import TestimonialsPage from "../../pages/TestimonialsPage";
+import ContactPage from "../../pages/ContactPage";
+
 
 const HomePage = lazy(() => import('../../pages/HomePage'));
 const LoginPage = lazy(() => import('../../pages/LoginPage'));
@@ -57,6 +59,10 @@ export default function AppRouter() {
             <Route path={AppRoutes.CART} element={<ProtectedRoute><CartPage /></ProtectedRoute>} />
             <Route path={AppRoutes.CHECKOUT} element={<ProtectedRoute><CheckoutPage /></ProtectedRoute>} />
             <Route path="/payment" element={<ProtectedRoute><PaymentPage /></ProtectedRoute>} />
+           <Route
+  path={AppRoutes.CONTACT_PAGE}
+  element={<ContactPage />}
+/>
             <Route
               path={AppRoutes.CUSTOMER_DASHBOARD}
               element={<CustomerRoute><CustomerDashboardPage /></CustomerRoute>}
@@ -65,6 +71,7 @@ export default function AppRouter() {
               path={AppRoutes.CUSTOMER_ORDERS}
               element={<CustomerRoute><CustomerOrdersPage /></CustomerRoute>}
             />
+           
             <Route
               path={AppRoutes.WISHLIST}
               element={<CustomerRoute><WishlistPage /></CustomerRoute>}

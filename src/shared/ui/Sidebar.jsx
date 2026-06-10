@@ -2,17 +2,15 @@ import { useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AppRoutes } from '../routes';
 import { motion } from 'framer-motion';
-import { BarChart3, Database, Heart, LayoutDashboard, Layers, ListChecks, PackagePlus, Settings, ShoppingCart, Sparkles, Users } from 'lucide-react';
+import { BarChart3, Database, Heart, LayoutDashboard, Layers, ListChecks, PackagePlus, Settings, ShoppingCart, Sparkles, Users,Bell } from 'lucide-react';
 
 const customerItems = [
   { label: 'Dashboard', to: AppRoutes.CUSTOMER_DASHBOARD, icon: LayoutDashboard },
   { label: 'Products', to: AppRoutes.PRODUCTS, icon: Layers },
-  { label: 'Wishlist', to: AppRoutes.WISHLIST, icon: Heart },
   { label: 'Cart', to: AppRoutes.CART, icon: ShoppingCart },
-  { label: 'Orders', to: AppRoutes.CUSTOMER_ORDERS, icon: ListChecks },
-  { label: 'Saved Designs', to: AppRoutes.DESIGN_EXPLORER, icon: Sparkles },
-  { label: 'AI Visualizer', to: AppRoutes.AI_VISUALIZER, icon: PackagePlus },
+  { label: 'Orders', to: AppRoutes.CUSTOMER_ORDERS, icon: ListChecks }, 
   { label: 'Settings', to: AppRoutes.SETTINGS, icon: Settings },
+  {label:'Notifications', to: AppRoutes.NOTIFICATIONS, icon: Bell}
 ];
 
 const adminItems = [
@@ -20,9 +18,6 @@ const adminItems = [
   { label: 'Products', to: AppRoutes.ADMIN_PRODUCTS, icon: Layers },
   { label: 'Orders', to: AppRoutes.ADMIN_ORDERS, icon: ListChecks },
   { label: 'Customers', to: AppRoutes.ADMIN_CUSTOMERS, icon: Users },
-  { label: 'Inventory', to: AppRoutes.ADMIN_INVENTORY, icon: Database },
-  { label: 'Invoices', to: AppRoutes.ADMIN_INVOICES, icon: PackagePlus },
-  { label: 'Analytics', to: AppRoutes.ADMIN_ANALYTICS, icon: BarChart3 },
   { label: 'Settings', to: AppRoutes.SETTINGS, icon: Settings },
 ];
 

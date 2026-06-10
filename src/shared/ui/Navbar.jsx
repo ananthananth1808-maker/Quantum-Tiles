@@ -53,7 +53,7 @@ export default function Navbar({ onOpenMobile }) {
 
           <motion.div variants={staggerItem} whileHover={{ scale: 1.05 }}>
             <Link to={AppRoutes.HOME} className="flex items-center gap-3 text-base font-semibold uppercase tracking-[0.18em] text-primary">
-              <span className="flex h-11 w-11 items-center justify-center rounded-3xl bg-primary text-white">QT</span>
+            <img src="/images/qt.jpeg" alt="Logo" className="h-8 w-15 rounded-full object-cover" />
               <span className="hidden sm:inline">Quantum Tiles</span>
             </Link>
           </motion.div>
@@ -88,76 +88,18 @@ export default function Navbar({ onOpenMobile }) {
           initial="hidden"
           animate="visible"
         >
-          {/* Search */}
-          <motion.div variants={staggerItem} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <Link
-              to={AppRoutes.SEARCH}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-3xl border border-border bg-surface text-textPrimary transition hover:bg-blue-50 hover:border-primary/30"
-            >
-              <Search className="h-5 w-5" />
-            </Link>
-          </motion.div>
+         
 
-          {/* Cart */}
-          <motion.div variants={staggerItem} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <Link
-              to={AppRoutes.CART}
-              className="relative inline-flex h-11 w-11 items-center justify-center rounded-3xl border border-border bg-surface text-textPrimary transition hover:bg-blue-50 hover:border-primary/30"
-            >
-              <ShoppingCart className="h-5 w-5" />
-              {totalItems > 0 && (
-                <motion.span
-                  className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1.5 text-[10px] font-semibold text-white"
-                  animate={{ scale: [1, 1.15, 1] }}
-                  transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 3 }}
-                >
-                  {totalItems}
-                </motion.span>
-              )}
-            </Link>
-          </motion.div>
+         
 
-          {/* Wishlist */}
-          <motion.div variants={staggerItem} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <Link
-              to={AppRoutes.WISHLIST}
-              className="relative inline-flex h-11 w-11 items-center justify-center rounded-3xl border border-border bg-surface text-textPrimary transition hover:bg-blue-50 hover:border-primary/30"
-            >
-              <Heart className="h-5 w-5" />
-              <motion.span
-                className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1.5 text-[10px] font-semibold text-white"
-                animate={{ scale: [1, 1.15, 1] }}
-                transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 3 }}
-              >
-                5
-              </motion.span>
-            </Link>
-          </motion.div>
-
-          {/* Notifications */}
-          <motion.div variants={staggerItem} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-            <Link
-              to={AppRoutes.NOTIFICATIONS}
-              className="relative inline-flex h-11 w-11 items-center justify-center rounded-3xl border border-border bg-surface text-textPrimary transition hover:bg-blue-50 hover:border-primary/30"
-            >
-              <Bell className="h-5 w-5" />
-              <motion.span
-                className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1.5 text-[10px] font-semibold text-white"
-                animate={{ scale: [1, 1.15, 1] }}
-                transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 3 }}
-              >
-                2
-              </motion.span>
-            </Link>
-          </motion.div>
-
+         
           {/* Profile / Auth */}
           {authenticated ? (
             <motion.div variants={staggerItem}>
               <ProfileDropdown role={role} />
             </motion.div>
           ) : (
-            <motion.div variants={staggerItem} className="hidden items-center gap-2 md:flex">
+            <motion.div variants={staggerItem} className="hidden items-center gap-2 md:flex color-primary">
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Link to={AppRoutes.LOGIN} className="rounded-full border border-border bg-surface px-4 py-2 text-sm font-semibold text-textPrimary transition hover:bg-blue-50 hover:border-primary/30">
                   Login

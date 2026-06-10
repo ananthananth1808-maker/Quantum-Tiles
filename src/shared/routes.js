@@ -25,6 +25,7 @@ export const AppRoutes = {
   DESIGN_EXPLORER: '/design-explorer',
   TILE_VISUALIZER: '/tile-visualizer',
   SEARCH: '/search',
+  CONTACT_PAGE: '/contactpage',
   NOTIFICATIONS: '/notifications',
   NOT_FOUND: '*',
 };
