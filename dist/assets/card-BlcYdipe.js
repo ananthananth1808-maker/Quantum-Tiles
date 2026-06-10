@@ -1,1 +1,0 @@
-import{j as d}from"./index-BhWjKmUm.js";function a({children:r,className:o=""}){return d.jsx("div",{className:`rounded-3xl border border-border bg-white p-6 shadow-card backdrop-blur-xl ${o}`,children:r})}export{a as C};
