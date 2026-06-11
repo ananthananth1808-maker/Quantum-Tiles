@@ -69,43 +69,44 @@ const recentOrders = [
 
 export default function AdminDashboardPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 p-6">
-            <motion.div
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 px-4 sm:px-6 md:p-6">
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-8 rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl"
+        className="mb-6 sm:mb-8 rounded-[2rem] border border-white/10 bg-white/5 p-5 sm:p-8 backdrop-blur-xl"
       >
-        <h1 className="text-5xl font-bold text-white">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
           Admin Dashboard
         </h1>
 
-        <p className="mt-4 text-white/70">
+        <p className="mt-3 sm:mt-4 text-sm sm:text-base text-white/70">
           Manage products, orders, customers and analytics.
         </p>
       </motion.div>
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((item) => (
           <motion.div
             key={item.title}
             whileHover={{ y: -5 }}
           >
-            <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
-              <div className="flex justify-between items-center">
-                <div>
-                  <p className="text-cyan-400 text-sm uppercase">
+            <Card className="rounded-[2rem] border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-xl">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div className="flex-1">
+                  <p className="text-cyan-400 text-xs uppercase tracking-wider">
                     {item.title}
                   </p>
 
-                  <h2 className="mt-3 text-4xl font-bold text-white">
+                  <h2 className="mt-2 sm:mt-3 text-2xl sm:text-3xl md:text-4xl font-bold text-white">
                     {item.value}
                   </h2>
 
-                  <p className="mt-2 text-green-400">
+                  <p className="mt-1 sm:mt-2 text-sm text-green-400">
                     {item.growth}
                   </p>
                 </div>
 
-                <div className="text-5xl">
+                <div className="text-3xl sm:text-5xl">
                   {item.icon}
                 </div>
               </div>
@@ -113,35 +114,39 @@ export default function AdminDashboardPage() {
           </motion.div>
         ))}
       </div>
-           <div className="mt-6 h-80 rounded-xl bg-white/5 p-4">
-  <ResponsiveContainer width="100%" height="100%">
-    <LineChart data={revenueData}>
-      <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
 
-      <XAxis
-        dataKey="month"
-        stroke="#94A3B8"
-      />
+      <div className="mt-6 sm:mt-8 h-60 sm:h-72 md:h-80 rounded-xl bg-white/5 p-3 sm:p-4 overflow-x-auto">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={revenueData}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
 
-      <YAxis
-        stroke="#94A3B8"
-      />
+            <XAxis
+              dataKey="month"
+              stroke="#94A3B8"
+              tick={{ fontSize: 12 }}
+            />
 
-      <Tooltip />
+            <YAxis
+              stroke="#94A3B8"
+              tick={{ fontSize: 12 }}
+            />
 
-      <Line
-        type="monotone"
-        dataKey="revenue"
-        stroke="#06B6D4"
-        strokeWidth={4}
-        dot={{ r: 6 }}
-      />
-    </LineChart>
-  </ResponsiveContainer>
-</div>
-            <Card className="mt-8 rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
-        <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-bold text-white">
+            <Tooltip />
+
+            <Line
+              type="monotone"
+              dataKey="revenue"
+              stroke="#06B6D4"
+              strokeWidth={3}
+              dot={{ r: 5 }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
+
+      <Card className="mt-6 sm:mt-8 rounded-[2rem] border border-white/10 bg-white/5 p-4 sm:p-8 backdrop-blur-xl overflow-x-auto">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+          <h2 className="text-xl sm:text-2xl font-bold text-white">
             Recent Orders
           </h2>
 
@@ -150,55 +155,58 @@ export default function AdminDashboardPage() {
           </Button>
         </div>
 
-        <table className="w-full mt-6">
-          <thead>
-            <tr className="text-white/60">
-              <th className="text-left py-4">Order</th>
-              <th className="text-left py-4">Customer</th>
-              <th className="text-left py-4">Amount</th>
-              <th className="text-left py-4">Status</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {recentOrders.map((order) => (
-              <tr
-                key={order.id}
-                className="border-t border-white/10"
-              >
-                <td className="py-4 text-white">
-                  {order.id}
-                </td>
-
-                <td className="text-white">
-                  {order.customer}
-                </td>
-
-                <td className="text-white">
-                  {order.total}
-                </td>
-
-                <td className="text-cyan-400">
-                  {order.status}
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[400px]">
+            <thead>
+              <tr className="text-white/60 border-b border-white/10">
+                <th className="text-left py-3 sm:py-4 px-2 sm:px-0 text-xs sm:text-sm">Order</th>
+                <th className="text-left py-3 sm:py-4 px-2 sm:px-0 text-xs sm:text-sm">Customer</th>
+                <th className="text-left py-3 sm:py-4 px-2 sm:px-0 text-xs sm:text-sm">Amount</th>
+                <th className="text-left py-3 sm:py-4 px-2 sm:px-0 text-xs sm:text-sm">Status</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+
+            <tbody>
+              {recentOrders.map((order) => (
+                <tr
+                  key={order.id}
+                  className="border-t border-white/10 hover:bg-white/5 transition"
+                >
+                  <td className="py-3 sm:py-4 px-2 sm:px-0 text-white text-sm">
+                    {order.id}
+                  </td>
+
+                  <td className="py-3 sm:py-4 px-2 sm:px-0 text-white text-sm">
+                    {order.customer}
+                  </td>
+
+                  <td className="py-3 sm:py-4 px-2 sm:px-0 text-white text-sm">
+                    {order.total}
+                  </td>
+
+                  <td className="py-3 sm:py-4 px-2 sm:px-0 text-cyan-400 text-sm">
+                    {order.status}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </Card>
-            <div className="grid gap-6 mt-8 md:grid-cols-3">
-        <Button className="h-16 rounded-2xl">
+
+      <div className="grid gap-3 sm:gap-6 mt-6 sm:mt-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <Button className="h-12 sm:h-16 rounded-2xl text-sm sm:text-base">
           Add Product
         </Button>
 
-        <Button className="h-16 rounded-2xl">
+        <Button className="h-12 sm:h-16 rounded-2xl text-sm sm:text-base">
           Manage Orders
         </Button>
 
-        <Button className="h-16 rounded-2xl">
+        <Button className="h-12 sm:h-16 rounded-2xl text-sm sm:text-base">
           View Analytics
         </Button>
       </div>
-          </div>
+    </div>
   );
 }

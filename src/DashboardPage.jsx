@@ -69,29 +69,22 @@ const itemVariants = {
 
 export default function DashboardPage() {
   return (
-    <div className="relative z-50-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-black text-white w-full grid-cols-2 ">
+    <div className="relative z-0 bg-gradient-to-br from-slate-950 via-blue-950 to-black text-white w-full min-h-screen">
 
       {/* Background Glow */}
-      <div className="absolute right-10 bottom-20 h-72 w-72 rounded-full bg-purple-500/20 blur-[120px] grid-cols-2" />
-      <div className="absolute left-1/2  h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-[150px]" />
+      <div className="absolute right-0 bottom-20 h-48 sm:h-72 w-48 sm:w-72 rounded-full bg-purple-500/20 blur-[80px] sm:blur-[120px]" />
+      <div className="absolute left-1/2 top-0 h-72 sm:h-96 w-72 sm:w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-[100px] sm:blur-[150px]" />
 
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 mx-auto  min-h-screen w-full grid-cols-2 gap-6 px-6 py-8 md:grid-cols-[280px_1fr]"
-      
+        className="relative z-10 mx-auto w-full min-h-screen gap-6 px-4 py-6 sm:px-6 md:px-8 lg:px-6"
       >
-        {/* Sidebar */}
-       
-
-         
-        
-
         {/* Main Content */}
         <main className="space-y-6">
           {/* Stats */}
-          <section className="grid gap-6 md:grid-cols-3">
+          <section className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {stats.map((stat) => (
               <motion.div
                 key={stat.label}
@@ -101,80 +94,76 @@ export default function DashboardPage() {
                   scale: 1.03,
                 }}
               >
-               <Card className="rounded-[2rem] border border-white/20 bg-white/10 p-6 backdrop-blur-xl shadow-2xl">
-  <div className="flex flex-col items-center text-center gap-4">
-    
-    <div className="rounded-3xl bg-white/10 p-4 text-3xl">
-      {stat.icon}
-    </div>
+                <Card className="rounded-[2rem] border border-white/20 bg-white/10 p-4 sm:p-6 backdrop-blur-xl shadow-2xl">
+                  <div className="flex flex-col items-center text-center gap-3 sm:gap-4">
+                    
+                    <div className="rounded-3xl bg-white/10 p-3 sm:p-4 text-2xl sm:text-3xl">
+                      {stat.icon}
+                    </div>
 
-    <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">
-      {stat.label}
-    </p>
+                    <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">
+                      {stat.label}
+                    </p>
 
-    <h3 className="text-4xl font-bold">
-      {stat.value}
-    </h3>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+                      {stat.value}
+                    </h3>
 
-  </div>
-</Card>
+                  </div>
+                </Card>
 
               </motion.div>
             ))}
-            
-            
-            
           </section>
-          <div className="rounded-[2rem] border border-white/20 bg-white/10 p-5 backdrop-blur-xl mt-0">
+
+          <div className="rounded-[2rem] border border-white/20 bg-white/10 p-4 sm:p-5 backdrop-blur-xl">
             <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">
               Download Invoice
             </p>
 
-            <p className="mt-3 text-sm text-gray-300">
+            <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-gray-300">
               Access latest invoices or complete purchase history.
             </p>
 
-            <Button className="mt-5 w-full transition-all duration-300 hover:scale-105">
+            <Button className="mt-3 sm:mt-5 w-full transition-all duration-300 hover:scale-105">
               Download
             </Button>
           </div>
-          
-          
 
           {/* Orders + Status */}
-          <section className="grid gap-6 xl:grid-cols-[1.3fr_0.9fr]">
+          <section className="grid gap-6 grid-cols-1 lg:grid-cols-[1.3fr_0.9fr]">
 
             {/* Recent Orders */}
             <motion.div
               variants={itemVariants}
               whileHover={{ y: -5 }}
             >
-              <Card className="rounded-[2rem] border border-white/20 bg-white/10 p-6 backdrop-blur-xl shadow-2xl">
-                <div className="flex items-center justify-between">
+              <Card className="rounded-[2rem] border border-white/20 bg-white/10 p-4 sm:p-6 backdrop-blur-xl shadow-2xl overflow-hidden">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
                   <div>
                     <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">
                       Recent Orders
                     </p>
 
-                    <h3 className="mt-3 text-2xl font-bold">
+                    <h3 className="mt-2 sm:mt-3 text-lg sm:text-2xl font-bold">
                       Latest Purchases
                     </h3>
                   </div>
 
-                  <Button variant="ghost">
+                  <Button variant="ghost" className="text-xs sm:text-sm">
                     View All Orders
                   </Button>
                 </div>
 
-                <div className="mt-6 overflow-hidden rounded-3xl border border-white/20">
-                  <table className="min-w-full text-left text-sm">
+                <div className="overflow-x-auto rounded-3xl border border-white/20">
+                  <table className="w-full text-left text-xs sm:text-sm min-w-[500px]">
                     <thead className="bg-white/5">
                       <tr>
-                        <th className="px-5 py-4">Order</th>
-                        <th className="px-5 py-4">Product</th>
-                        <th className="px-5 py-4">Date</th>
-                        <th className="px-5 py-4">Status</th>
-                        <th className="px-5 py-4 text-right">Amount</th>
+                        <th className="px-3 sm:px-5 py-3 sm:py-4">Order</th>
+                        <th className="px-3 sm:px-5 py-3 sm:py-4">Product</th>
+                        <th className="px-3 sm:px-5 py-3 sm:py-4">Date</th>
+                        <th className="px-3 sm:px-5 py-3 sm:py-4">Status</th>
+                        <th className="px-3 sm:px-5 py-3 sm:py-4 text-right">Amount</th>
                       </tr>
                     </thead>
 
@@ -188,23 +177,23 @@ export default function DashboardPage() {
                           }}
                           className="border-t border-white/10"
                         >
-                          <td className="px-5 py-4 font-semibold">
+                          <td className="px-3 sm:px-5 py-3 sm:py-4 font-semibold">
                             {order.id}
                           </td>
 
-                          <td className="px-5 py-4">
+                          <td className="px-3 sm:px-5 py-3 sm:py-4">
                             {order.product}
                           </td>
 
-                          <td className="px-5 py-4">
+                          <td className="px-3 sm:px-5 py-3 sm:py-4">
                             {order.date}
                           </td>
 
-                          <td className="px-5 py-4">
+                          <td className="px-3 sm:px-5 py-3 sm:py-4">
                             {order.status}
                           </td>
 
-                          <td className="px-5 py-4 text-right font-semibold">
+                          <td className="px-3 sm:px-5 py-3 sm:py-4 text-right font-semibold">
                             {order.amount}
                           </td>
                         </motion.tr>
@@ -213,30 +202,28 @@ export default function DashboardPage() {
                   </table>
                 </div>
               </Card>
-              
             </motion.div>
-            
 
             {/* Order Status */}
             <motion.div variants={itemVariants}>
-              <Card className="rounded-[2rem] border border-white/20 bg-white/10 p-6 backdrop-blur-xl shadow-2xl">
-                <div className="flex items-center justify-between">
+              <Card className="rounded-[2rem] border border-white/20 bg-white/10 p-4 sm:p-6 backdrop-blur-xl shadow-2xl">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
                   <div>
                     <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">
                       Order Status
                     </p>
 
-                    <h3 className="mt-3 text-2xl font-bold">
+                    <h3 className="mt-2 sm:mt-3 text-lg sm:text-2xl font-bold">
                       Current Progress
                     </h3>
                   </div>
 
-                  <Button variant="ghost">
+                  <Button variant="ghost" className="text-xs sm:text-sm">
                     Track
                   </Button>
                 </div>
 
-                <div className="mt-6 space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {orderStatus.map((status, index) => (
                     <motion.div
                       key={status.label}
@@ -244,21 +231,21 @@ export default function DashboardPage() {
                         scale: 1.03,
                         x: 5,
                       }}
-                      className="rounded-3xl border border-white/20 bg-white/10 p-4"
+                      className="rounded-3xl border border-white/20 bg-white/10 p-3 sm:p-4"
                     >
-                      <div className="flex items-center justify-between">
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
                         <div>
                           <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">
                             {status.label}
                           </p>
 
-                          <h4 className="mt-2 text-xl font-bold">
+                          <h4 className="mt-1 sm:mt-2 text-base sm:text-xl font-bold">
                             {status.count} Orders
                           </h4>
                         </div>
 
                         <div className="w-32">
-                          <div className="h-3 overflow-hidden rounded-full bg-white/10">
+                          <div className="h-2 sm:h-3 overflow-hidden rounded-full bg-white/10">
                             <motion.div
                               initial={{ width: 0 }}
                               animate={{
@@ -278,10 +265,7 @@ export default function DashboardPage() {
                 </div>
               </Card>
             </motion.div>
-            
-
           </section>
-           
         </main>
       </motion.div>
       

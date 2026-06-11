@@ -14,8 +14,6 @@ const features = [
   'Secure Online Ordering',
 ];
 
-const roles = ['Customer', 'Admin'];
-
 // Validation patterns
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_REGEX = /^[\d\s\-().+]+$/;
@@ -84,15 +82,14 @@ export default function AuthPage({ initialTab = 'login' }) {
       PHONE_REGEX.test(data.phone) &&
       data.password && 
       data.password.length >= 8 &&
-      data.password === data.confirmPassword &&
-      data.role;
+      data.password === data.confirmPassword;
 
     if (isValid) {
       const user = registerUser({
         name: data.name.trim(),
         email: data.email,
         phone: data.phone,
-        role: data.role?.toLowerCase() || 'customer',
+        role: 'customer',
       });
       setToast({ type: 'success', message: `Account created for ${user.email}! Redirecting...` });
       reset();
@@ -123,15 +120,15 @@ export default function AuthPage({ initialTab = 'login' }) {
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="relative flex-1 bg-[linear-gradient(180deg,rgba(15,23,42,0.96),rgba(15,23,42,0.78))] bg-cover bg-center px-6 py-12 text-black md:px-12 lg:px-16"
+          className="relative flex-1 bg-[linear-gradient(180deg,rgba(15,23,42,0.96),rgba(15,23,42,0.78))] bg-cover bg-center px-6 py-12 text-white md:px-12 lg:px-16"
           style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80)' }}
         >
           <div className="absolute inset-0 bg-black/5" />
           <div className="relative z-10 flex h-full flex-col justify-between gap-10">
             <div className="max-w-xl">
-              <p className="text-sm uppercase tracking-[0.35em] text-black">Quantum Tiles</p>
-              <h1 className="mt-6 text-4xl font-semibold tracking-tight text-black sm:text-5xl">Transform Your Space with Premium Tiles</h1>
-              <p className="mt-6 text-base leading-7 text-orange sm:text-lg">
+              <p className="text-sm uppercase tracking-[0.35em] text-white">Quantum Tiles</p>
+              <h1 className="mt-6 text-4xl font-semibold tracking-tight text-white sm:text-5xl">Transform Your Space with Premium Tiles</h1>
+              <p className="mt-6 text-base leading-7 text-white sm:text-lg">
                 Explore luxury tile collections, AI-powered room visualization, and seamless online tile shopping.
               </p>
             </div>
@@ -150,17 +147,17 @@ export default function AuthPage({ initialTab = 'login' }) {
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex-1 px-6 py-12 md:px-10 lg:px-14"
+          className="flex-1 px-4 py-8 sm:px-6 md:px-10 lg:px-14 md:py-12"
         >
           <div className="mx-auto max-w-2xl">
-            <Card className="rounded-[2rem] border border-white/10 bg-white shadow-glow text-black px-6 py-8 md:px-8 md:py-10">
-              <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+            <Card className="rounded-[2rem] border border-white/10 bg-white shadow-glow text-black px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10">
+              <div className="mb-8 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
                 {['login', 'register'].map((tab) => (
                   <button
                     key={tab}
                     type="button"
                     onClick={() => setActiveTab(tab)}
-                    className={`rounded-full px-6 py-3 text-sm font-semibold transition ${activeTab === tab ? 'bg-primary text-black shadow-md' : 'bg-surface text-black border border-border hover:bg-blue-50'}`}
+                    className={`rounded-full px-4 sm:px-6 py-2 sm:py-3 text-xs sm:text-sm font-semibold transition ${activeTab === tab ? 'bg-primary text-black shadow-md' : 'bg-surface text-black border border-border hover:bg-blue-50'}`}
                   >
                     {tab === 'login' ? 'Login' : 'Register'}
                   </button>
@@ -171,7 +168,7 @@ export default function AuthPage({ initialTab = 'login' }) {
                 {activeTab === 'login' ? (
                   <form onSubmit={handleSubmit(handleLogin)} className="space-y-5">
                     <div className="space-y-4">
-                      <label className="block text-sm font-medium text-black">Email</label>
+                      <label className="block text-xs sm:text-sm font-medium text-slate-700">Email</label>
                       <input
                         type="email"
                         placeholder="you@quantumtiles.com"
@@ -181,11 +178,11 @@ export default function AuthPage({ initialTab = 'login' }) {
                           pattern: { value: EMAIL_REGEX, message: 'Please enter a valid email address' },
                         })}
                       />
-                      {errors.email && <p className="text-xs text-rose-300">{errors.email.message}</p>}
+                      {errors.email && <p className="text-xs text-rose-600">{errors.email.message}</p>}
                     </div>
 
                     <div className="space-y-4">
-                      <label className="block text-sm font-medium text-black">Password</label>
+                      <label className="block text-xs sm:text-sm font-medium text-slate-700">Password</label>
                       <div className="relative">
                         <input
                           type={showPassword ? 'text' : 'password'}
@@ -199,15 +196,15 @@ export default function AuthPage({ initialTab = 'login' }) {
                         <button
                           type="button"
                           onClick={() => setShowPassword((value) => !value)}
-                          className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 px-3 py-2 text-xs text-black transition hover:bg-white/20"
+                          className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 px-3 py-2 text-xs text-slate-700 transition hover:bg-white/20"
                         >
                           {showPassword ? 'Hide' : 'Show'}
                         </button>
                       </div>
-                      {errors.password && <p className="text-xs text-rose-300">{errors.password.message}</p>}
+                      {errors.password && <p className="text-xs text-rose-600">{errors.password.message}</p>}
                     </div>
 
-                    <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-black">
+                    <div className="flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm text-slate-700">
                       <label className="inline-flex items-center gap-2">
                         <input type="checkbox" className="h-4 w-4 rounded border-border bg-surface accent-primary" />
                         Remember Me
@@ -228,13 +225,13 @@ export default function AuthPage({ initialTab = 'login' }) {
                   </form>
                 ) : (
                   <form onSubmit={handleSubmit(handleRegister)} className="space-y-5">
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <label className="space-y-2 text-sm text-black">
-                        <span>Full Name</span>
+                    <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
+                      <label className="space-y-2 text-xs sm:text-sm text-slate-700">
+                        <span className="font-medium">Full Name</span>
                         <input
                           type="text"
                           placeholder="John Doe"
-                          className="w-full rounded-3xl border border-black bg-navy/80 px-4 py-3 text-black outline-none transition focus:border-gold"
+                          className="w-full rounded-3xl border border-border bg-surface px-4 py-3 text-black outline-none transition focus:border-primary focus:ring-2 focus:ring-blue-100"
                           {...register('name', {
                             required: 'Full name is required',
                             minLength: { value: 2, message: 'Name must be at least 2 characters' },
@@ -242,45 +239,45 @@ export default function AuthPage({ initialTab = 'login' }) {
                             pattern: { value: /^[a-zA-Z\s]*$/, message: 'Name can only contain letters and spaces' },
                           })}
                         />
-                        {errors.name && <p className="text-xs text-rose-500">{errors.name.message}</p>}
+                        {errors.name && <p className="text-xs text-rose-600">{errors.name.message}</p>}
                       </label>
-                      <label className="space-y-2 text-sm text-black">
-                        <span>Phone Number</span>
+                      <label className="space-y-2 text-xs sm:text-sm text-slate-700">
+                        <span className="font-medium">Phone Number</span>
                         <input
                           type="tel"
                           placeholder="(123) 456-7890"
-                          className="w-full rounded-3xl border border-black bg-navy/80 px-4 py-3 text-black outline-none transition focus:border-gold"
+                          className="w-full rounded-3xl border border-border bg-surface px-4 py-3 text-black outline-none transition focus:border-primary focus:ring-2 focus:ring-blue-100"
                           {...register('phone', {
                             required: 'Phone number is required',
                             pattern: { value: PHONE_REGEX, message: 'Please enter a valid phone number' },
                             minLength: { value: 10, message: 'Phone number must be at least 10 digits' },
                           })}
                         />
-                        {errors.phone && <p className="text-xs text-rose-500">{errors.phone.message}</p>}
+                        {errors.phone && <p className="text-xs text-rose-600">{errors.phone.message}</p>}
                       </label>
                     </div>
 
                     <div className="space-y-4">
-                      <label className="block text-sm font-medium text-black">Email</label>
+                      <label className="block text-xs sm:text-sm font-medium text-slate-700">Email</label>
                       <input
                         type="email"
                         placeholder="you@quantumtiles.com"
-                        className="w-full rounded-3xl border border-black bg-navy/80 px-4 py-3 text-black outline-none transition focus:border-gold"
+                        className="w-full rounded-3xl border border-border bg-surface px-4 py-3 text-black outline-none transition focus:border-primary focus:ring-2 focus:ring-blue-100"
                         {...register('email', {
                           required: 'Email is required',
                           pattern: { value: EMAIL_REGEX, message: 'Please enter a valid email address' },
                         })}
                       />
-                      {errors.email && <p className="text-xs text-rose-500">{errors.email.message}</p>}
+                      {errors.email && <p className="text-xs text-rose-600">{errors.email.message}</p>}
                     </div>
 
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <label className="space-y-2 text-sm text-black">
-                        <span>Password</span>
+                    <div className="grid gap-3 sm:gap-4 sm:grid-cols-2">
+                      <label className="space-y-2 text-xs sm:text-sm text-slate-700">
+                        <span className="font-medium">Password</span>
                         <input
                           type={showPassword ? 'text' : 'password'}
                           placeholder="Create a password"
-                          className="w-full rounded-3xl border border-black bg-navy/80 px-4 py-3 text-black outline-none transition focus:border-gold"
+                          className="w-full rounded-3xl border border-border bg-surface px-4 py-3 text-black outline-none transition focus:border-primary focus:ring-2 focus:ring-blue-100"
                           {...register('password', {
                             required: 'Password is required',
                             minLength: { value: 8, message: 'Password must be at least 8 characters' },
@@ -288,12 +285,12 @@ export default function AuthPage({ initialTab = 'login' }) {
                           })}
                         />
                       </label>
-                      <label className="space-y-2 text-sm text-black">
-                        <span>Confirm Password</span>
+                      <label className="space-y-2 text-xs sm:text-sm text-slate-700">
+                        <span className="font-medium">Confirm Password</span>
                         <input
                           type={showPassword ? 'text' : 'password'}
                           placeholder="Confirm your password"
-                          className="w-full rounded-3xl border border-black bg-navy/80 px-4 py-3 text-black outline-none transition focus:border-gold"
+                          className="w-full rounded-3xl border border-border bg-surface px-4 py-3 text-black outline-none transition focus:border-primary focus:ring-2 focus:ring-blue-100"
                           {...register('confirmPassword', {
                             required: 'Please confirm your password',
                             validate: (value) => value === password || 'Passwords do not match',
@@ -301,35 +298,8 @@ export default function AuthPage({ initialTab = 'login' }) {
                         />
                       </label>
                     </div>
-                    {errors.password?.message && <p className="text-xs text-rose-500">{errors.password.message}</p>}
-                    {errors.confirmPassword?.message && <p className="text-xs text-rose-500">{errors.confirmPassword.message}</p>}
-                    <div className="space-y-4">
-                      <label className="text-sm font-medium text-black">Select Role</label>
-                      <div className="flex gap-6">
-                        <label className="inline-flex items-center gap-3 cursor-pointer">
-                          <input
-                            type="radio"
-                            value="customer"
-                            {...register('role', { required: 'Please select a role' })}
-                            defaultChecked
-                            className="w-4 h-4 cursor-pointer"
-                          />
-                          <span className="text-sm text-black">Customer</span>
-                        </label>
-                        <label className="inline-flex items-center gap-3 cursor-pointer">
-                          <input
-                            type="radio"
-                            value="admin"
-                            {...register('role', { required: 'Please select a role' })}
-                            className="w-4 h-4 cursor-pointer"
-                          />
-                          <span className="text-sm text-black">Admin</span>
-                        </label>
-                      </div>
-                      {errors.role && <p className="text-xs text-rose-500">{errors.role.message}</p>}
-                    </div>
-
-                   
+                    {errors.password?.message && <p className="text-xs text-rose-600">{errors.password.message}</p>}
+                    {errors.confirmPassword?.message && <p className="text-xs text-rose-600">{errors.confirmPassword.message}</p>}
 
                     <div className="space-y-4">
                       <Button type="submit" className="w-full px-5 py-3 text-base font-semibold uppercase tracking-[0.18em]">
