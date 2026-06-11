@@ -16,6 +16,11 @@ const features = [
 
 const roles = ['Customer', 'Admin'];
 
+// Validation patterns
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_REGEX = /^[\d\s\-().+]+$/;
+const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
+
 const toastVariants = {
   success: 'bg-emerald-500/10 border-emerald-400/30 text-emerald-100',
   error: 'bg-rose-500/10 border-rose-400/30 text-rose-100',
@@ -53,7 +58,7 @@ export default function AuthPage({ initialTab = 'login' }) {
     await mockDelay(1200);
     setLoading(false);
 
-    if (data.email.includes('@')) {
+    if (EMAIL_REGEX.test(data.email) && data.password && data.password.length >= 6) {
       const user = login({
         email: data.email,
         role: data.email.includes('admin') ? 'admin' : 'customer',
@@ -62,7 +67,7 @@ export default function AuthPage({ initialTab = 'login' }) {
       reset();
       navigate(user.role === 'admin' ? AppRoutes.ADMIN_DASHBOARD : AppRoutes.CUSTOMER_DASHBOARD);
     } else {
-      setToast({ type: 'error', message: 'Login failed. Please check your email and password.' });
+      setToast({ type: 'error', message: 'Invalid email or password. Please try again.' });
     }
   };
 
@@ -71,17 +76,29 @@ export default function AuthPage({ initialTab = 'login' }) {
     await mockDelay(1400);
     setLoading(false);
 
-    if (data.email.includes('@') && data.password === data.confirmPassword) {
+    // Validate all fields
+    const isValid = 
+      data.name && 
+      data.name.trim().length >= 2 &&
+      EMAIL_REGEX.test(data.email) && 
+      PHONE_REGEX.test(data.phone) &&
+      data.password && 
+      data.password.length >= 8 &&
+      data.password === data.confirmPassword &&
+      data.role;
+
+    if (isValid) {
       const user = registerUser({
-        name: data.name,
+        name: data.name.trim(),
         email: data.email,
+        phone: data.phone,
         role: data.role?.toLowerCase() || 'customer',
       });
       setToast({ type: 'success', message: `Account created for ${user.email}! Redirecting...` });
       reset();
       navigate(user.role === 'admin' ? AppRoutes.ADMIN_DASHBOARD : AppRoutes.CUSTOMER_DASHBOARD);
     } else {
-      setToast({ type: 'error', message: 'Registration error. Please correct the highlighted fields.' });
+      setToast({ type: 'error', message: 'Please fill all fields correctly and try again.' });
     }
   };
 
@@ -159,7 +176,10 @@ export default function AuthPage({ initialTab = 'login' }) {
                         type="email"
                         placeholder="you@quantumtiles.com"
                         className="w-full rounded-3xl border border-border bg-surface px-4 py-3 text-black outline-none transition focus:border-primary focus:ring-2 focus:ring-blue-100"
-                        {...register('email', { required: 'Email is required' })}
+                        {...register('email', {
+                          required: 'Email is required',
+                          pattern: { value: EMAIL_REGEX, message: 'Please enter a valid email address' },
+                        })}
                       />
                       {errors.email && <p className="text-xs text-rose-300">{errors.email.message}</p>}
                     </div>
@@ -171,7 +191,10 @@ export default function AuthPage({ initialTab = 'login' }) {
                           type={showPassword ? 'text' : 'password'}
                           placeholder="Enter your password"
                           className="w-full rounded-3xl border border-border bg-surface px-4 py-3 pr-28 text-black outline-none transition focus:border-primary focus:ring-2 focus:ring-blue-100"
-                          {...register('password', { required: 'Password is required' })}
+                          {...register('password', {
+                            required: 'Password is required',
+                            minLength: { value: 6, message: 'Password must be at least 6 characters' },
+                          })}
                         />
                         <button
                           type="button"
@@ -181,7 +204,7 @@ export default function AuthPage({ initialTab = 'login' }) {
                           {showPassword ? 'Hide' : 'Show'}
                         </button>
                       </div>
-                      {errors.password && <p className="text-xs text-black">{errors.password.message}</p>}
+                      {errors.password && <p className="text-xs text-rose-300">{errors.password.message}</p>}
                     </div>
 
                     <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-black">
@@ -212,9 +235,14 @@ export default function AuthPage({ initialTab = 'login' }) {
                           type="text"
                           placeholder="John Doe"
                           className="w-full rounded-3xl border border-black bg-navy/80 px-4 py-3 text-black outline-none transition focus:border-gold"
-                          {...register('name', { required: 'Full name is required' })}
+                          {...register('name', {
+                            required: 'Full name is required',
+                            minLength: { value: 2, message: 'Name must be at least 2 characters' },
+                            maxLength: { value: 50, message: 'Name must not exceed 50 characters' },
+                            pattern: { value: /^[a-zA-Z\s]*$/, message: 'Name can only contain letters and spaces' },
+                          })}
                         />
-                        {errors.name && <p className="text-xs text-black">{errors.name.message}</p>}
+                        {errors.name && <p className="text-xs text-rose-500">{errors.name.message}</p>}
                       </label>
                       <label className="space-y-2 text-sm text-black">
                         <span>Phone Number</span>
@@ -222,9 +250,13 @@ export default function AuthPage({ initialTab = 'login' }) {
                           type="tel"
                           placeholder="(123) 456-7890"
                           className="w-full rounded-3xl border border-black bg-navy/80 px-4 py-3 text-black outline-none transition focus:border-gold"
-                          {...register('phone', { required: 'Phone number is required' })}
+                          {...register('phone', {
+                            required: 'Phone number is required',
+                            pattern: { value: PHONE_REGEX, message: 'Please enter a valid phone number' },
+                            minLength: { value: 10, message: 'Phone number must be at least 10 digits' },
+                          })}
                         />
-                        {errors.phone && <p className="text-xs text-black">{errors.phone.message}</p>}
+                        {errors.phone && <p className="text-xs text-rose-500">{errors.phone.message}</p>}
                       </label>
                     </div>
 
@@ -236,10 +268,10 @@ export default function AuthPage({ initialTab = 'login' }) {
                         className="w-full rounded-3xl border border-black bg-navy/80 px-4 py-3 text-black outline-none transition focus:border-gold"
                         {...register('email', {
                           required: 'Email is required',
-                          pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Enter a valid email' },
+                          pattern: { value: EMAIL_REGEX, message: 'Please enter a valid email address' },
                         })}
                       />
-                      {errors.email && <p className="text-xs text-black">{errors.email.message}</p>}
+                      {errors.email && <p className="text-xs text-rose-500">{errors.email.message}</p>}
                     </div>
 
                     <div className="grid gap-4 sm:grid-cols-2">
@@ -249,7 +281,11 @@ export default function AuthPage({ initialTab = 'login' }) {
                           type={showPassword ? 'text' : 'password'}
                           placeholder="Create a password"
                           className="w-full rounded-3xl border border-black bg-navy/80 px-4 py-3 text-black outline-none transition focus:border-gold"
-                          {...register('password', { required: 'Password is required', minLength: { value: 6, message: 'Minimum 6 characters' } })}
+                          {...register('password', {
+                            required: 'Password is required',
+                            minLength: { value: 8, message: 'Password must be at least 8 characters' },
+                            maxLength: { value: 128, message: 'Password must not exceed 128 characters' },
+                          })}
                         />
                       </label>
                       <label className="space-y-2 text-sm text-black">
@@ -265,8 +301,33 @@ export default function AuthPage({ initialTab = 'login' }) {
                         />
                       </label>
                     </div>
-                    {errors.password?.message && <p className="text-xs text-black">{errors.password.message}</p>}
-                    {errors.confirmPassword?.message && <p className="text-xs text-black">{errors.confirmPassword.message}</p>}
+                    {errors.password?.message && <p className="text-xs text-rose-500">{errors.password.message}</p>}
+                    {errors.confirmPassword?.message && <p className="text-xs text-rose-500">{errors.confirmPassword.message}</p>}
+                    <div className="space-y-4">
+                      <label className="text-sm font-medium text-black">Select Role</label>
+                      <div className="flex gap-6">
+                        <label className="inline-flex items-center gap-3 cursor-pointer">
+                          <input
+                            type="radio"
+                            value="customer"
+                            {...register('role', { required: 'Please select a role' })}
+                            defaultChecked
+                            className="w-4 h-4 cursor-pointer"
+                          />
+                          <span className="text-sm text-black">Customer</span>
+                        </label>
+                        <label className="inline-flex items-center gap-3 cursor-pointer">
+                          <input
+                            type="radio"
+                            value="admin"
+                            {...register('role', { required: 'Please select a role' })}
+                            className="w-4 h-4 cursor-pointer"
+                          />
+                          <span className="text-sm text-black">Admin</span>
+                        </label>
+                      </div>
+                      {errors.role && <p className="text-xs text-rose-500">{errors.role.message}</p>}
+                    </div>
 
                    
 
