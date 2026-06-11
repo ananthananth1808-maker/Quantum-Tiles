@@ -6,7 +6,7 @@ import { AppRoutes } from "../shared/routes";
 export default function AboutPage() {
   const navigate = useNavigate();
   return (
-    <section className="space-y-10 bg-gradient-to-b from-white via-yellow-50 to-gray-100 p-6 rounded-3xl">
+    <section className="space-y-10">
       
       {/* Hero Section */}
       <div className="rounded-[2rem] border border-yellow-400/30 p-10 bg-gradient-to-r from-black via-gray-900 to-black shadow-2xl">

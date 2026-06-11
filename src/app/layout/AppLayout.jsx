@@ -27,7 +27,13 @@ export default function AppLayout() {
     AppRoutes.ADMIN_ANALYTICS,
   ].some(route => location.pathname.startsWith(route));
 
-  const shouldAddTopPadding = isDashboard;
+  const shouldAddTopPadding = true;
+
+  const sidebarPaddingClass = authenticated 
+    ? sidebarCollapsed 
+      ? 'md:pl-[80px]' 
+      : 'md:pl-[280px]'
+    : '';
 
   return (
     <div className="min-h-screen bg-background text-textPrimary">
@@ -37,8 +43,7 @@ export default function AppLayout() {
       ) : null}
 
       <main
-        className={`min-h-screen px-4 pb-10 transition-all duration-300 md:px-6 ${shouldAddTopPadding ? 'pt-[5.5rem]' : ''}`}
-        style={{ paddingLeft: isDashboard && authenticated ? (sidebarCollapsed ? 80 : 280) : undefined }}
+        className={`min-h-screen pb-10 transition-all duration-300 ${!isDashboard ? 'px-4 md:px-6' : ''} ${shouldAddTopPadding ? 'pt-[5.5rem]' : ''} ${sidebarPaddingClass}`}
       >
         <Outlet />
       </main>

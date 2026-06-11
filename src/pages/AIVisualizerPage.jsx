@@ -101,12 +101,12 @@ export default function AIVisualizer() {
     setLoading(false);
   };
   return (
-    <div className="p-6 bg-violet-100">
-      <h1 className="text-3xl font-bold mb-6">
+    <section className="space-y-10">
+      <h1 className="text-3xl font-bold">
         AI Tile Visualizer
       </h1>
 
-      <div className="mb-6">
+      <div>
         <label className="block text-sm font-medium mb-2">Upload Room Image</label>
         <input
           type="file"
@@ -117,7 +117,7 @@ export default function AIVisualizer() {
         {roomImageUrl && <p className="text-sm text-green-600 mt-1">✓ Room image uploaded</p>}
       </div>
 
-      <div className="mb-6">
+      <div>
         <label className="block text-sm font-medium mb-2">Select Tile</label>
         <select
           className="border p-2 w-full"
@@ -150,7 +150,7 @@ export default function AIVisualizer() {
       )}
 
       {showPreview && roomImageUrl && selectedTileImage && (
-        <div className="mt-8">
+        <div>
           <h2 className="text-2xl font-semibold mb-4">Preview</h2>
           <div className="relative inline-block rounded-lg overflow-hidden shadow-lg">
             {/* Base Room Image */}
@@ -179,6 +179,6 @@ export default function AIVisualizer() {
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }
