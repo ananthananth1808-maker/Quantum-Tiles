@@ -268,23 +268,7 @@ export default function AuthPage({ initialTab = 'login' }) {
                     {errors.password?.message && <p className="text-xs text-black">{errors.password.message}</p>}
                     {errors.confirmPassword?.message && <p className="text-xs text-black">{errors.confirmPassword.message}</p>}
 
-                    <div className="space-y-4 text-sm text-black">
-                      <p className="font-medium uppercase tracking-[0.32em] text-primary">Select role</p>
-                      <div className="flex flex-wrap gap-3">
-                        {roles.map((role) => (
-                          <label key={role} className="inline-flex items-center gap-3 rounded-3xl border border-border bg-surface px-4 py-3 text-textSecondary transition hover:border-primary">
-                            <input
-                              type="radio"
-                              value={role}
-                              {...register('role', { required: true })}
-                              defaultChecked={role === 'Customer'}
-                              className="h-4 w-4 accent-gold"
-                            />
-                            {role}
-                          </label>
-                        ))}
-                      </div>
-                    </div>
+                   
 
                     <div className="space-y-4">
                       <Button type="submit" className="w-full px-5 py-3 text-base font-semibold uppercase tracking-[0.18em]">

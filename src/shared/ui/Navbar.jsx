@@ -5,7 +5,6 @@ import { isAdmin, isAuthenticated, isCustomer } from '../../entities/auth/model/
 import { useCart } from '../../entities/cart/model/CartProvider';
 import ProfileDropdown from './ProfileDropdown';
 import { Search, ShoppingCart, Heart, Bell, Menu } from 'lucide-react';
-import { Button } from '../../components/ui/button';
 import { navbarSlideDown, staggerContainer, staggerItem } from '../../shared/animations/variants';
 
 const centerLinks = [
@@ -105,7 +104,11 @@ export default function Navbar({ onOpenMobile }) {
                   Login
                 </Link>
               </motion.div>
-              <Button variant="solid" className="rounded-full px-4 py-2 text-sm font-semibold">Register</Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link to={AppRoutes.REGISTER} className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white transition hover:bg-primary/90">
+                  Register
+                </Link>
+              </motion.div>
             </motion.div>
           )}
         </motion.div>
